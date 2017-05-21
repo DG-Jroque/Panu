@@ -25,8 +25,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    ArrayList<Pet>pets;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,52 +42,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-            loadPets();
-
-    }
-
-    public void savePets(){
-        FileOutputStream fos = null;
-        ObjectOutputStream os = null;
-        try {
-            fos = openFileOutput("PanuPets_File", MODE_PRIVATE);
-            os = new ObjectOutputStream(fos);
-            os.writeObject(pets);
-            os.close();
-            fos.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Error al Guardar los datos, vuelva a intentarlo", Toast.LENGTH_LONG).show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Error al Guardar los datos, vuelva a intentarlo", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void loadPets(){
-        FileInputStream fis = null;
-        ObjectInputStream is = null;
-        try {
-            fis = openFileInput("PanuPets_File");
-            is = new ObjectInputStream(fis);
-            pets= (ArrayList<Pet>) is.readObject();
-            is.close();
-            fis.close();
-        } catch (FileNotFoundException e) {
-            pets= new ArrayList<Pet>();
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Aun no se tienen mascotas", Toast.LENGTH_LONG).show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            pets= new ArrayList<Pet>();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            pets= new ArrayList<Pet>();
-        }
-
     }
 
     @Override
