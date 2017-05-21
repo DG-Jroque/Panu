@@ -30,18 +30,17 @@ public class Pet {
         this.color=color;
         this.hair=hair;
         vaccines= new ArrayList<>();
-        this.age= calculateBirthDay();
+        calculateBirthDay();
     }
 
-    public int calculateBirthDay(){
-        int A=0;
-        String [] BD= birthDay.split("-");
+    public void calculateBirthDay(){
+        String [] BD= this.birthDay.split("-");
         String []date = new SimpleDateFormat("yyyy-MM-dd").format(new Date()).split("-");
         int BirthMonth= parseInt(BD[1]);
         int currentMonth= parseInt(date[1]);
         if( BirthMonth >= currentMonth)     //quiere decir que no ha cumplido año en el año actual
         {
-            A = parseInt(BD[0])-parseInt(date[0])-1;
+            this.age = parseInt(BD[0])-parseInt(date[0])-1;
         }
         else
         {
@@ -49,14 +48,14 @@ public class Pet {
             int currentDay= parseInt(date[2]);
             if(Day>=currentDay)
             {
-                A = parseInt(BD[0])-parseInt(date[0])-1;
+                this.age = parseInt(BD[0])-parseInt(date[0])-1;
             }
             else
             {
-                A = parseInt(BD[0])-parseInt(date[0]);
+                this.age = parseInt(BD[0])-parseInt(date[0]);
             }
         }
-        return A;
+
     }
 
 
