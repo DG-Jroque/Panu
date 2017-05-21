@@ -12,9 +12,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    ArrayList<Pet>pets;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +44,52 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+            loadPets();
+
+    }
+
+    public void savePets(){
+        FileOutputStream fos = null;
+        ObjectOutputStream os = null;
+        try {
+            fos = openFileOutput("PanuPets_File", MODE_PRIVATE);
+            os = new ObjectOutputStream(fos);
+            os.writeObject(pets);
+            os.close();
+            fos.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Error al Guardar los datos, vuelva a intentarlo", Toast.LENGTH_LONG).show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Error al Guardar los datos, vuelva a intentarlo", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void loadPets(){
+        FileInputStream fis = null;
+        ObjectInputStream is = null;
+        try {
+            fis = openFileInput("PanuPets_File");
+            is = new ObjectInputStream(fis);
+            pets= (ArrayList<Pet>) is.readObject();
+            is.close();
+            fis.close();
+        } catch (FileNotFoundException e) {
+            pets= new ArrayList<Pet>();
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Aun no se tienen mascotas", Toast.LENGTH_LONG).show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            pets= new ArrayList<Pet>();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            pets= new ArrayList<Pet>();
+        }
+
     }
 
     @Override

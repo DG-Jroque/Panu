@@ -1,5 +1,6 @@
 package com.mycaker.panu;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,7 +12,7 @@ import static java.lang.Integer.parseInt;
  * Created by Carlos on 20/05/2017.
  */
 
-public class Pet {
+public class Pet implements Serializable{
 
     private int age, weigth;
     private String name, birthDay   //FORMAT "YYYY-MM-DD"
