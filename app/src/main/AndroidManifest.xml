@@ -27,7 +27,7 @@
             android:label="@string/title_activity_pet_carnet"
             android:theme="@style/AppTheme" />
         <activity android:name=".Associations" />
-        <activity android:name=".About"></activity>
+        <activity android:name=".CreateEditPet"></activity>
     </application>
 
 </manifest>
