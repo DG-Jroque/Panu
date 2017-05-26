@@ -36,12 +36,11 @@ public class myPets extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_myPets);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         loadPets();
@@ -93,7 +92,7 @@ public class myPets extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_myPets);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -128,18 +127,27 @@ public class myPets extends AppCompatActivity
         switch (id){
             case R.id.Adoption:{
             }break;
-            case R.id.About:{}break;
-            case R.id.Addpet:{}break;
+            case R.id.About:{
+                Intent intent=new Intent(myPets.this,About.class);
+                startActivity(intent);
+            }break;
+            case R.id.Addpet:{
+
+            }break;
             case R.id.Associations:{
                 Intent intent=new Intent(myPets.this,Associations.class);
                 startActivity(intent);
             }break;
             case R.id.Events:{}break;
-            case R.id.Mypets:{}break;
+            case R.id.Mypets:{
+                Intent intent=new Intent(myPets.this,myPets.class);
+                startActivity(intent);
+
+            }break;
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_myPets);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
