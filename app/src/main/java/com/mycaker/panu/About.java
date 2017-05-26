@@ -11,16 +11,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class Associations extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+public class About extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_associations);
+        setContentView(R.layout.activity_about);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_associations);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_about);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -31,7 +30,7 @@ public class Associations extends AppCompatActivity
     }
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_associations);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_about);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -65,27 +64,27 @@ public class Associations extends AppCompatActivity
         int id = item.getItemId();
         switch (id){
             case R.id.Adoption:{
-                Intent intent=new Intent(Associations.this,Adoption.class);
+                Intent intent=new Intent(About.this,Adoption.class);
                 startActivity(intent);
             }break;
             case R.id.About:{
-                Intent intent=new Intent(Associations.this,About.class);
+                Intent intent=new Intent(About.this,About.class);
                 startActivity(intent);
             }break;
             case R.id.Addpet:{
-                Intent intent=new Intent(Associations.this,CreateEditPet.class);
+                Intent intent=new Intent(About.this,CreateEditPet.class);
                 startActivity(intent);
             }break;
             case R.id.Associations:{
-                Intent intent=new Intent(Associations.this,Associations.class);
+                Intent intent=new Intent(About.this,Associations.class);
                 startActivity(intent);
             }break;
             case R.id.Events:{
-                Intent intent=new Intent(Associations.this,Events.class);
+                Intent intent=new Intent(About.this,Events.class);
                 startActivity(intent);
             }break;
             case R.id.Mypets:{
-                Intent intent=new Intent(Associations.this,myPets.class);
+                Intent intent=new Intent(About.this,myPets.class);
                 startActivity(intent);
 
             }break;
@@ -93,7 +92,7 @@ public class Associations extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_associations);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_about);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

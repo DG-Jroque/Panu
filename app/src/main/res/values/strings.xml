@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Panu</string>
-    <string name="title_activity_my_pets">myPets</string>
-
+    <string name="title_activity_my_pets">Mis Mascotas</string>
+    <string name="title_activity_events">Eventos</string>
+    <string name="title_activity_associations">Asociaciones</string>
+    <string name="title_activity_adoption">Adopcion</string>
+    <string name="title_activity_about">Acerca de</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
