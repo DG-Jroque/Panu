@@ -1,38 +1,23 @@
 package com.mycaker.panu;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-
-public class myPets extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
-    private ArrayList<Pet>pets;
-
+public class Associations extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_pets);
+        setContentView(R.layout.activity_associations);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -44,53 +29,8 @@ public class myPets extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        loadPets();
 
     }
-
-    public void savePets(){
-        FileOutputStream fos = null;
-        ObjectOutputStream os = null;
-        try {
-            fos = openFileOutput("PanuPets_File", MODE_PRIVATE);
-            os = new ObjectOutputStream(fos);
-            os.writeObject(pets);
-            os.close();
-            fos.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Error al Guardar los datos, vuelva a intentarlo", Toast.LENGTH_LONG).show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Error al Guardar los datos, vuelva a intentarlo", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void loadPets(){
-        FileInputStream fis = null;
-        ObjectInputStream is = null;
-        try {
-            fis = openFileInput("PanuPets_File");
-            is = new ObjectInputStream(fis);
-            pets= (ArrayList<Pet>) is.readObject();
-            is.close();
-            fis.close();
-        } catch (FileNotFoundException e) {
-            pets= new ArrayList<Pet>();
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Aun no se tienen mascotas", Toast.LENGTH_LONG).show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            pets= new ArrayList<Pet>();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            pets= new ArrayList<Pet>();
-        }
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -131,13 +71,14 @@ public class myPets extends AppCompatActivity
             case R.id.About:{}break;
             case R.id.Addpet:{}break;
             case R.id.Associations:{
-                Intent intent=new Intent(myPets.this,Associations.class);
+                Intent intent=new Intent(Associations.this,Associations.class);
                 startActivity(intent);
             }break;
             case R.id.Events:{}break;
             case R.id.Mypets:{}break;
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

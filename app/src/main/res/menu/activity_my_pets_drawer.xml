@@ -1,35 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Mis Mascotas" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Configuración" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
+    <item
+        android:checked="true"
+        android:title="Yo">
+        <menu>
+            <item
+                android:id="@+id/Mypets"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="Mis Mascotas" />
+            <item
+                android:id="@+id/Addpet"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Agregar Mascota" />
+
+        </menu>
+    </item>
 
     <item android:title="Conoce">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/Events"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Eventos" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/Adoption"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Adopción" />
+                android:title="Adopción"
+                />
+            <item
+                android:id="@+id/Associations"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Asocioaciones" />
+            <item
+                android:id="@+id/About"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Contactanos papu" />
         </menu>
     </item>
 

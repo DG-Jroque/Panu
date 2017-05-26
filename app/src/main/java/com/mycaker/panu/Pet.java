@@ -16,7 +16,7 @@ public class Pet implements Serializable{
 
     private int age, weigth;
     private String name, birthDay   //FORMAT "YYYY-MM-DD"
-            , breed, color, hair ;
+            , breed, color, hair, imagepath ;
     private ArrayList<String> vaccines, diseases;
 
     public Pet(){
@@ -30,6 +30,7 @@ public class Pet implements Serializable{
         this.breed=breed;
         this.color=color;
         this.hair=hair;
+        this.imagepath=imagepath;
         vaccines= new ArrayList<>();
         calculateBirthDay();
     }
@@ -107,7 +108,8 @@ public class Pet implements Serializable{
     public void setHair(String hair) {
         this.hair = hair;
     }
-
+    public  String getImagepath(){ return  imagepath;}
+    public  void Setimagepath(){this.imagepath=imagepath;}
     public ArrayList<String> getVaccines() {
         return vaccines;
     }
