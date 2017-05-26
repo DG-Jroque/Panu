@@ -126,26 +126,34 @@ public class myPets extends AppCompatActivity
         int id = item.getItemId();
         switch (id){
             case R.id.Adoption:{
+                Intent intent=new Intent(myPets.this,Adoption.class);
+                startActivity(intent);
             }break;
             case R.id.About:{
                 Intent intent=new Intent(myPets.this,About.class);
                 startActivity(intent);
             }break;
             case R.id.Addpet:{
-
+                Intent intent=new Intent(myPets.this,CreateEditPet.class);
+                startActivity(intent);
             }break;
             case R.id.Associations:{
                 Intent intent=new Intent(myPets.this,Associations.class);
                 startActivity(intent);
             }break;
-            case R.id.Events:{}break;
+            case R.id.Events:{
+                Intent intent=new Intent(myPets.this,Events.class);
+                startActivity(intent);
+            }break;
             case R.id.Mypets:{
                 Intent intent=new Intent(myPets.this,myPets.class);
                 startActivity(intent);
 
             }break;
+            default:break;
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_myPets);
         drawer.closeDrawer(GravityCompat.START);
