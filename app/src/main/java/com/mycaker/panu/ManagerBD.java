@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 import static android.R.attr.id;
 
 /**
@@ -31,9 +33,9 @@ public class ManagerBD extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 
-    }
+    //Section of querys for pet
 
     public Pet showpet(int id) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
@@ -54,12 +56,6 @@ public class ManagerBD extends SQLiteOpenHelper {
 
     public void inpet(Pet p) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
-            /*String index = "SELECT id FROM PETS ORDER BY id ASC LIMIT 1;";
-            Cursor cursor = db.rawQuery(index, null);
-            while(cursor.moveToNext()) {
-                cursor.getString(0);
-                cursor.getInt(1)
-            }*/
         String ip = "INSERT INTO PETS VALUES (" + p.getName() +
                 ", " + p.getBirthDay() +
                 ", " + p.getBreed() +
@@ -71,6 +67,7 @@ public class ManagerBD extends SQLiteOpenHelper {
                 ", " + p.getImagepath() + ");";
         db.execSQL(ip);
     }
+
     public void edpet(Pet p) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
         String ep = "UPDATE PETS SET name = " + p.getName() +
@@ -85,11 +82,27 @@ public class ManagerBD extends SQLiteOpenHelper {
                 " WHERE id_pet = " + p.getId() + ";";
         db.execSQL(ep);
     }
+
     public void delpet(int id) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
         String dp = "DELETE FROM PETS WHERE id_pet = " + id + ";";
         db.execSQL(dp);
     }
+
+    //Section of querys for vaccine
+
+    public ArrayList<Vaccine> showvacc(int id) throws Exception{
+        ArrayList<Vaccine> vaccines = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sv = "SELECT * FROM VACCINES WHERE id_pet = " + id + ";";
+        Cursor cursor = db.rawQuery(sv, null);
+        while(cursor.moveToNext()) {
+            Vaccine vaux = new Vaccine(cursor.getString(2),cursor.getString(1),cursor.getString(3),cursor.getInt(0),cursor.getInt(4));
+            vaccines.add(vaux);
+        }
+        return vaccines;
+    }
+
     public void invac(Vaccine v) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
         String iv = "INSERT INTO VACCINES VALUES (" + v.getName() +
@@ -98,11 +111,27 @@ public class ManagerBD extends SQLiteOpenHelper {
                 ", " + v.getPetId() + ");";
         db.execSQL(iv);
     }
+
     public void delvac(int id) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
         String dv = "DELETE FROM VACCINES WHERE id_vacc = " + id + ";";
         db.execSQL(dv);
     }
+
+    //Section of querys for medical
+
+    public ArrayList<Medical> showmed(int id) throws Exception{
+        ArrayList<Medical> medicals = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sm = "SELECT * FROM MEDICAL WHERE id_pet = " + id + ";";
+        Cursor cursor = db.rawQuery(sm, null);
+        while(cursor.moveToNext()) {
+            Medical maux = new Medical(cursor.getString(1),cursor.getString(2),cursor.getInt(0),cursor.getInt(3));
+            medicals.add(maux);
+        }
+        return medicals;
+    }
+
     public void inmed(Medical m) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
         String iv = "INSERT INTO VACCINES VALUES (" + m.getDisease() +
@@ -110,11 +139,27 @@ public class ManagerBD extends SQLiteOpenHelper {
                 ", " + m.getPetId() + ");";
         db.execSQL(iv);
     }
+
     public void delmed(int id) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
         String dm = "DELETE FROM MEDICAL WHERE id_med = " + id + ";";
         db.execSQL(dm);
     }
+
+    //Section of querys for deworming
+
+    public ArrayList<Deworming> showdew(int id) throws Exception {
+        ArrayList<Deworming> dewormings = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sd = "SELECT * FROM VACCINES WHERE id_pet = " + id + ";";
+        Cursor cursor = db.rawQuery(sd, null);
+        while (cursor.moveToNext()) {
+            Deworming vaux = new Deworming(cursor.getString(2), cursor.getString(1), cursor.getInt(0), cursor.getInt(3));
+            dewormings.add(vaux);
+        }
+        return dewormings;
+    }
+
     public void indew(Deworming d) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
         String iv = "INSERT INTO DEWORMING VALUES (" + d.getProduct() +
@@ -122,6 +167,7 @@ public class ManagerBD extends SQLiteOpenHelper {
                 ", " + d.getPetId() + ");";
         db.execSQL(iv);
     }
+
     public void deldew() throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
         String dd = "DELETE FROM DEWORMING WHERE id_dew = " + id + ";";
