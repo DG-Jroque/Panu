@@ -19,6 +19,18 @@ public class Pet implements Serializable{
     ArrayList<Deworming> deworming;
 
     private int age, weigth, id;
+    private int age;
+    private int weigth;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
     private String name;
     private String birthDay;   //FORMAT "YYYY-MM-DD
     private String breed;
@@ -44,7 +56,7 @@ public class Pet implements Serializable{
     }
 
     private String sex ;
-    //private ArrayList<String> vaccines, diseases;
+    private ArrayList<String> vaccines, diseases;
 
     public Pet(){
 
@@ -58,10 +70,8 @@ public class Pet implements Serializable{
         this.color=color;
         this.hair=hair;
         this.imagepath=imagepath;
-        calculateBirthDay();
         vaccines= new ArrayList<>();
-        medical = new ArrayList<>();
-        deworming = new ArrayList<>();
+        calculateBirthDay();
     }
 
     public void calculateBirthDay(){
@@ -139,8 +149,7 @@ public class Pet implements Serializable{
     }
     public  String getImagepath(){ return  imagepath;}
     public  void Setimagepath(){this.imagepath=imagepath;}
-
-    /*public ArrayList<String> getVaccines() {
+    public ArrayList<String> getVaccines() {
         return vaccines;
     }
 
@@ -156,7 +165,7 @@ public class Pet implements Serializable{
         this.diseases = diseases;
     }
 
-*/
+
 
 
 }
