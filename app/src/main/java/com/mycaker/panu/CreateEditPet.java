@@ -121,7 +121,7 @@ public class CreateEditPet extends AppCompatActivity {
                                        hair.getSelectedItem().toString(),
                                        sex.getSelectedItem().toString(),
                                        specie.getSelectedItem().toString(),
-                                       imageUri.toString());
+                                       "direccion");
                             try {
                                 db.inpet(p);
                             } catch (Exception e) {
@@ -139,7 +139,7 @@ public class CreateEditPet extends AppCompatActivity {
                                 hair.getSelectedItem().toString(),
                                 sex.getSelectedItem().toString(),
                                 specie.getSelectedItem().toString(),
-                                imageUri.toString());
+                                "direccion");
                         try {
                             db.inpet(p);
                         } catch (Exception e) {
