@@ -134,10 +134,10 @@ public class ManagerBD extends SQLiteOpenHelper {
 
     public void inmed(Medical m) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
-        String iv = "INSERT INTO VACCINES VALUES (" + m.getDisease() +
+        String im = "INSERT INTO VACCINES VALUES (" + m.getDisease() +
                 ", " + m.getDate() +
                 ", " + m.getPetId() + ");";
-        db.execSQL(iv);
+        db.execSQL(im);
     }
 
     public void delmed(int id) throws Exception{
@@ -154,18 +154,18 @@ public class ManagerBD extends SQLiteOpenHelper {
         String sd = "SELECT * FROM VACCINES WHERE id_pet = " + id + ";";
         Cursor cursor = db.rawQuery(sd, null);
         while (cursor.moveToNext()) {
-            Deworming vaux = new Deworming(cursor.getString(2), cursor.getString(1), cursor.getInt(0), cursor.getInt(3));
-            dewormings.add(vaux);
+            Deworming daux = new Deworming(cursor.getString(2), cursor.getString(1), cursor.getInt(0), cursor.getInt(3));
+            dewormings.add(daux);
         }
         return dewormings;
     }
 
     public void indew(Deworming d) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
-        String iv = "INSERT INTO DEWORMING VALUES (" + d.getProduct() +
+        String id = "INSERT INTO DEWORMING VALUES (" + d.getProduct() +
                 ", " + d.getDate() +
                 ", " + d.getPetId() + ");";
-        db.execSQL(iv);
+        db.execSQL(id);
     }
 
     public void deldew() throws Exception{
