@@ -14,7 +14,18 @@ import static java.lang.Integer.parseInt;
 
 public class Pet implements Serializable{
 
-    private int age, weigth, id;
+    private int age;
+    private int weigth;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
     private String name;
     private String birthDay;   //FORMAT "YYYY-MM-DD
     private String breed;
