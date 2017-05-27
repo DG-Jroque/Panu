@@ -56,7 +56,7 @@ public class ManagerBD extends SQLiteOpenHelper {
 
     public void inpet(Pet p) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
-        String ip = "INSERT INTO PETS VALUES ( " + null +
+        String ip = "INSERT INTO PETS VALUES ( " +
                 ", " + p.getName() +
                 ", " + p.getBirthDay() +
                 ", " + p.getBreed() +
