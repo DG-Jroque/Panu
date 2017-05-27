@@ -10,8 +10,17 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-public class About extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+public class About extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +28,7 @@ public class About extends AppCompatActivity implements NavigationView.OnNavigat
         setContentView(R.layout.activity_about);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_about);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -28,6 +38,7 @@ public class About extends AppCompatActivity implements NavigationView.OnNavigat
         navigationView.setNavigationItemSelectedListener(this);
 
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_about);
@@ -91,6 +102,7 @@ public class About extends AppCompatActivity implements NavigationView.OnNavigat
             default:break;
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_about);
         drawer.closeDrawer(GravityCompat.START);
