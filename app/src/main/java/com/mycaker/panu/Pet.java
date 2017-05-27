@@ -18,7 +18,7 @@ public class Pet implements Serializable{
     ArrayList<Medical> medical;
     ArrayList<Deworming> deworming;
 
-    private int age, weigth, id;
+
     private int age;
     private int weigth;
 
@@ -56,8 +56,6 @@ public class Pet implements Serializable{
     }
 
     private String sex ;
-    private ArrayList<String> vaccines, diseases;
-
     public Pet(){
 
     }
