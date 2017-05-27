@@ -15,12 +15,11 @@ public class ManagerBD extends SQLiteOpenHelper {
 
     public ManagerBD(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
-
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String ctp = "CREATE TABLE PETS (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, breed TEXT, color TEXT, hair TEXT, weigth TEXT, sex TEXT, specie TEXT;)";
+        String ctp = "CREATE TABLE PETS (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, breed TEXT, color TEXT, hair TEXT, weigth TEXT, sex TEXT, specie TEXT);";
         db.execSQL(ctp);
     }
 
@@ -37,9 +36,11 @@ public class ManagerBD extends SQLiteOpenHelper {
                 cursor.getString(0);
                 cursor.getInt(1)
             }*/
-            String ip = "INSERT INTO PETS VALUES ("+p.getName()+", "+p.getBirthDay()+", "+p.getBreed()+", "+p.getColor()+", "+p.getHair()+", "+p.getWeigth()+", "+p.getSex()+", "+p.getSpecie()+")";
+            String ip = "INSERT INTO PETS VALUES ("+p.getName()+", "+p.getBirthDay()+", "+p.getBreed()+", "+p.getColor()+", "+p.getHair()+", "+p.getWeigth()+", "+p.getSex()+", "+p.getSpecie()+");";
     }
-    public void edpet(){
+    public void edpet(Pet p){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String ip = "UPDATE PETS SET name = "+p.getName()+", birthday = "+p.getBirthDay()+", breed = "+p.getBreed()+", color = "+p.getColor()+", hair = "+p.getHair()+", weigth = "+p.getWeigth()+", sex = "+p.getSex()+", specie = "+p.getSpecie()+"WHERE [condition]";
 
     }
     public void delpet(){
