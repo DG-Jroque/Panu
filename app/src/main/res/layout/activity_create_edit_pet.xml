@@ -27,15 +27,15 @@
         tools:layout_editor_absoluteY="132dp" />
 
     <Spinner
-        android:id="@+id/createditSpinner_Especie"
-        android:layout_width="125dp"
-        android:layout_height="27dp"
+        android:id="@+id/creatEdit_SpinnerEspecies"
+        android:layout_width="137dp"
+        android:layout_height="30dp"
         tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="191dp"
+        tools:layout_editor_absoluteY="190dp"
         android:entries="@array/species"/>
 
     <Spinner
-        android:id="@+id/createedit_Spinner"
+        android:id="@+id/createedit_SpinnerSex"
         android:layout_width="124dp"
         android:layout_height="31dp"
         tools:layout_editor_absoluteX="180dp"
@@ -53,21 +53,21 @@
         tools:layout_editor_absoluteY="286dp" />
 
     <EditText
-        android:id="@+id/createEdit_Peso"
+        android:id="@+id/createEdit_Weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Peso"
         android:inputType="numberDecimal"
         tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="338dp" />
+        tools:layout_editor_absoluteY="340dp" />
 
     <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="125dp"
-        android:layout_height="30dp"
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="239dp"
+        android:id="@+id/createEdit_SpinnerSize"
+        android:layout_width="140dp"
+        android:layout_height="26dp"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="242dp"
         android:entries="@array/Size"
 
         />
@@ -91,7 +91,7 @@
         tools:layout_editor_absoluteY="444dp" />
 
     <Spinner
-        android:id="@+id/spinner5"
+        android:id="@+id/createEdit_SpinnerHair"
         android:layout_width="121dp"
         android:layout_height="31dp"
         tools:layout_editor_absoluteX="183dp"
