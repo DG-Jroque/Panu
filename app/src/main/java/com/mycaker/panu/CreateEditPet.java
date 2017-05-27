@@ -9,12 +9,14 @@ public class CreateEditPet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_edit_pet);
-        Pet pet=(Pet) getIntent().getSerializableExtra("pet");
-        boolean edit= getIntent().getBooleanExtra("edit", false);
-        if(edit){
+
+
+        Integer id= getIntent().getIntExtra("id", -1);
+        if(id>=0){
 
         }
         else{
+            //Si se mandó una mascota desde la actividad anterior
 
         }
     }

@@ -10,4 +10,25 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_pet_carnet">petCarnet</string>
+
+    <string-array name="species">
+        <item>Perro</item>
+        <item>Gato</item>
+    </string-array>
+
+    <string-array name="Sex">
+        <item>Macho</item>
+        <item>Hembra</item>
+    </string-array>
+    <string-array name="Size">
+        <item>Pequeño</item>
+        <item>Mediano</item>
+        <item>Grande</item>
+    </string-array>
+    <string-array name="Hair">
+        <item>Corto</item>
+        <item>Mediano</item>
+        <item>Largo</item>
+    </string-array>
+
 </resources>
