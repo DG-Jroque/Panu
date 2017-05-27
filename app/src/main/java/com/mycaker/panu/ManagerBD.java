@@ -29,19 +29,20 @@ public class ManagerBD extends SQLiteOpenHelper {
     }
 
     public void inpet(Pet p) throws Exception{
-            SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
             /*String index = "SELECT id FROM PETS ORDER BY id ASC LIMIT 1;";
             Cursor cursor = db.rawQuery(index, null);
             while(cursor.moveToNext()) {
                 cursor.getString(0);
                 cursor.getInt(1)
             }*/
-            String ip = "INSERT INTO PETS VALUES ("+p.getName()+", "+p.getBirthDay()+", "+p.getBreed()+", "+p.getColor()+", "+p.getHair()+", "+p.getWeigth()+", "+p.getSex()+", "+p.getSpecie()+");";
+        String ip = "INSERT INTO PETS VALUES ("+p.getName()+", "+p.getBirthDay()+", "+p.getBreed()+", "+p.getColor()+", "+p.getHair()+", "+p.getWeigth()+", "+p.getSex()+", "+p.getSpecie()+");";
+        db.execSQL(ip);
     }
     public void edpet(Pet p){
         SQLiteDatabase db = this.getWritableDatabase();
-        String ip = "UPDATE PETS SET name = "+p.getName()+", birthday = "+p.getBirthDay()+", breed = "+p.getBreed()+", color = "+p.getColor()+", hair = "+p.getHair()+", weigth = "+p.getWeigth()+", sex = "+p.getSex()+", specie = "+p.getSpecie()+"WHERE id = "+p.getId()+";";
-
+        String ep = "UPDATE PETS SET name = "+p.getName()+", birthday = "+p.getBirthDay()+", breed = "+p.getBreed()+", color = "+p.getColor()+", hair = "+p.getHair()+", weigth = "+p.getWeigth()+", sex = "+p.getSex()+", specie = "+p.getSpecie()+"WHERE id = "+p.getId()+";";
+        db.execSQL(ep);
     }
     public void delpet(){
 
