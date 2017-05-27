@@ -70,6 +70,8 @@ public class Pet implements Serializable{
         this.hair=hair;
         this.imagepath=imagepath;
         vaccines= new ArrayList<>();
+        medical = new ArrayList<>();
+        deworming = new ArrayList<>();
         calculateBirthDay();
     }
 
