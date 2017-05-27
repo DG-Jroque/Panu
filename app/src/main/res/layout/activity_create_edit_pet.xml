@@ -13,16 +13,6 @@
         android:layout_height="match_parent">
 
 
-        <Button
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fecha"
-            tools:layout_editor_absoluteX="191dp"
-            tools:layout_editor_absoluteY="444dp"
-            android:layout_below="@+id/createEdit_SpinnerHair"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="17dp" />
 
         <ImageView
             android:id="@+id/petimage"
@@ -122,12 +112,12 @@
             android:layout_height="40dp"
             android:ems="10"
             android:hint="Peso"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             tools:layout_editor_absoluteX="36dp"
             tools:layout_editor_absoluteY="444dp"
+            android:layout_marginTop="16dp"
             android:layout_below="@+id/createEdit_Breed"
-            android:layout_alignEnd="@+id/createedit_SpinnerSex"
-            android:layout_marginTop="16dp" />
+            android:layout_alignStart="@+id/createEdit_Breed" />
 
 
         <Button
@@ -140,7 +130,16 @@
             android:layout_alignBottom="@+id/createEdit_Weight"
             android:layout_alignEnd="@+id/createEdit_Color" />
 
-
+        <EditText
+            android:id="@+id/createEdit_Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/createEdit_Name"
+            android:layout_below="@+id/createEdit_SpinnerHair"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="Fecha de nacimiento"
+            android:inputType="textPersonName" />
 
 
     </RelativeLayout>
