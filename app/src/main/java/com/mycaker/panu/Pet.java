@@ -60,7 +60,7 @@ public class Pet implements Serializable{
 
     }
 
-    public Pet(int weigth, String name, String birthDay, String breed, String color, String hair. String sex, String specie,
+    public Pet(int weigth, String name, String birthDay, String breed, String color, String hair, String sex, String specie,
                String imagepath){
         this.weigth= weigth;
         this.name= name;
@@ -73,6 +73,42 @@ public class Pet implements Serializable{
         medical = new ArrayList<>();
         deworming = new ArrayList<>();
         calculateBirthDay();
+    }
+
+    public ArrayList<Vaccines> getVaccines() {
+        return vaccines;
+    }
+
+    public void setVaccines(ArrayList<Vaccines> vaccines) {
+        this.vaccines = vaccines;
+    }
+
+    public ArrayList<Medical> getMedical() {
+        return medical;
+    }
+
+    public void setMedical(ArrayList<Medical> medical) {
+        this.medical = medical;
+    }
+
+    public ArrayList<Deworming> getDeworming() {
+        return deworming;
+    }
+
+    public void setDeworming(ArrayList<Deworming> deworming) {
+        this.deworming = deworming;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setImagepath(String imagepath) {
+        this.imagepath = imagepath;
     }
 
     public void calculateBirthDay(){
@@ -150,21 +186,8 @@ public class Pet implements Serializable{
     }
     public  String getImagepath(){ return  imagepath;}
     public  void Setimagepath(){this.imagepath=imagepath;}
-    public ArrayList<String> getVaccines() {
-        return vaccines;
-    }
 
-    public void setVaccines(ArrayList<String> vaccines) {
-        this.vaccines = vaccines;
-    }
 
-    public ArrayList<String> getDiseases() {
-        return diseases;
-    }
-
-    public void setDiseases(ArrayList<String> diseases) {
-        this.diseases = diseases;
-    }
 
 
 
