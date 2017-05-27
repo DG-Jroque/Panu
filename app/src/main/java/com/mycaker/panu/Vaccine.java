@@ -4,11 +4,11 @@ package com.mycaker.panu;
  * Created by Carlos on 27/05/2017.
  */
 
-public class Vaccines {
+public class Vaccine {
     String date, name, diluent;
     int id, petId;
 
-    Vaccines(String date, String name, String diluent, int id, int petId){
+    Vaccine(String date, String name, String diluent, int id, int petId){
         this.date=date;
         this.name=name;
         this.diluent=diluent;
