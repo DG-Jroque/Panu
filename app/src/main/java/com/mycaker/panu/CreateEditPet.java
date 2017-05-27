@@ -2,6 +2,7 @@ package com.mycaker.panu;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -131,9 +132,7 @@ public class CreateEditPet extends AppCompatActivity {
             int spinnerPosition3 = adapter.getPosition(pet.getSize());
             specie.setSelection(spinnerPosition2);
 
-            URL url = new URL("http://www.google.com"); //Some instantiated URL object
-            URI uri = url.toURI();
-            foto_gallery.setImageURI();
+            foto_gallery.setImageBitmap(BitmapFactory.decodeFile(pet.getImagepath()));
 
 
 
