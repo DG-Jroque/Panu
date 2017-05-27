@@ -30,7 +30,7 @@ public class CreateEditPet extends AppCompatActivity {
         EditText name= (EditText) findViewById(R.id.createEdit_Name);
         EditText color= (EditText) findViewById(R.id.createEdit_Color);
         final EditText breed = (EditText)findViewById(R.id.createEdit_Breed);
-        EditText weight = (EditText) findViewById(R.id.createEdit_Weight);
+        final EditText weight = (EditText) findViewById(R.id.createEdit_Weight);
         Spinner sex= (Spinner) findViewById(R.id.createedit_SpinnerSex);
         Spinner specie= (Spinner) findViewById(R.id.creatEdit_SpinnerEspecies);
         Spinner hair= (Spinner) findViewById(R.id.createEdit_SpinnerHair);
@@ -43,20 +43,6 @@ public class CreateEditPet extends AppCompatActivity {
                 openGallery();
             }
         });
-    }
-
-    private void openGallery(){
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(gallery, PICK_IMAGE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE){
-            imageUri = data.getData();
-            foto_gallery.setImageURI(imageUri);
-        }
-    }
 
         id= getIntent().getIntExtra("id", -1);
         //en caso de no mandar una mascota, crear una nueva
@@ -72,8 +58,6 @@ public class CreateEditPet extends AppCompatActivity {
             size.setFocusable(true);
             //MODIFICAR EL BOTON PARA SALVAR
             save.setText("Guardar");
-
-
 
         }
         else{
@@ -107,21 +91,46 @@ public class CreateEditPet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String aux="Guardar";
-                if(name.getText().toString()!="" && breed.getText().toString()! ){
+                /*if(name.getText().toString()!="" && breed.getText().toString()! ){
                     if(aux.compareTo(save.getText().toString())){
 
                         //Es una edicion de la mascota que se tiene
                         if(id>0){}
                         //se crea una inserción
                         else{
+                               Pet p= new Pet(
+                                        weight.getText().toString(),
+                                        name.getText().toString(),
+
+
+
 
                         }
                     }else{
 
                     }
                 }
-
+                */
             }
-        };
+        });
+
+
+
+    }
+
+    private void openGallery(){
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+            imageUri = data.getData();
+            foto_gallery.setImageURI(imageUri);
+        }
+    }
+
+
  }
 

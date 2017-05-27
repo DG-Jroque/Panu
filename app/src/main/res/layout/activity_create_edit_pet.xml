@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,97 +8,131 @@
     android:id="@+id/drawer_createEdit"
     tools:context="com.mycaker.panu.CreateEditPet">
 
-
-    <ImageView
-        android:id="@+id/petimage"
-        android:layout_width="158dp"
-        android:layout_height="126dp"
-        app:srcCompat="@drawable/ic_menu_gallery"
-        tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="7dp" />
-
-
-    <EditText
-        android:id="@+id/createEdit_Name"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nombre"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="132dp" />
+        android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/creatEdit_SpinnerEspecies"
-        android:layout_width="137dp"
-        android:layout_height="30dp"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="190dp"
-        android:entries="@array/species"/>
 
-    <Spinner
-        android:id="@+id/createedit_SpinnerSex"
-        android:layout_width="124dp"
-        android:layout_height="31dp"
-        tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="188dp"
-        android:entries="@array/Sex"/>
+        <ImageView
+            android:id="@+id/petimage"
+            android:layout_width="158dp"
+            android:layout_height="126dp"
+            app:srcCompat="@drawable/ic_menu_gallery"
+            tools:layout_editor_absoluteX="90dp"
+            tools:layout_editor_absoluteY="6dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp" />
 
-    <EditText
-        android:id="@+id/createEdit_Color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Color"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="286dp" />
+        <EditText
+            android:id="@+id/createEdit_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="66dp"
+            tools:layout_editor_absoluteY="132dp"
+            android:layout_below="@+id/petimage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp" />
 
-    <EditText
-        android:id="@+id/createEdit_Weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Peso"
-        android:inputType="numberDecimal"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="340dp" />
+        <Spinner
+            android:id="@+id/creatEdit_SpinnerEspecies"
+            android:layout_width="137dp"
+            android:layout_height="30dp"
+            tools:layout_editor_absoluteX="36dp"
+            tools:layout_editor_absoluteY="190dp"
+            android:entries="@array/species"
+            android:layout_below="@+id/createEdit_Name"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp" />
 
-    <Spinner
-        android:id="@+id/createEdit_SpinnerSize"
-        android:layout_width="140dp"
-        android:layout_height="26dp"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="242dp"
-        android:entries="@array/Size"
+        <Spinner
+            android:id="@+id/createedit_SpinnerSex"
+            android:layout_width="124dp"
+            android:layout_height="31dp"
+            tools:layout_editor_absoluteX="180dp"
+            tools:layout_editor_absoluteY="188dp"
+            android:entries="@array/Sex"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/creatEdit_SpinnerEspecies" />
 
-        />
+        <Spinner
+            android:id="@+id/createEdit_SpinnerSize"
+            android:layout_width="140dp"
+            android:layout_height="26dp"
+            tools:layout_editor_absoluteX="36dp"
+            tools:layout_editor_absoluteY="242dp"
+            android:entries="@array/Size"
 
-    <EditText
-        android:id="@+id/createEdit_Breed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Raza"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="390dp" />
+            android:layout_alignBottom="@+id/creatEdit_SpinnerEspecies"
+            android:layout_alignParentEnd="true" />
 
-    <Button
-        android:id="@+id/createEddit_ButtonSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Guardar"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="444dp" />
+        <Spinner
+            android:id="@+id/createEdit_SpinnerHair"
+            android:layout_width="121dp"
+            android:layout_height="31dp"
+            tools:layout_editor_absoluteX="183dp"
+            tools:layout_editor_absoluteY="238dp"
+            android:entries="@array/Hair"
+            android:layout_alignBaseline="@+id/createedit_SpinnerSex"
+            android:layout_alignBottom="@+id/createedit_SpinnerSex"
+            android:layout_alignParentEnd="true" />
 
-    <Spinner
-        android:id="@+id/createEdit_SpinnerHair"
-        android:layout_width="121dp"
-        android:layout_height="31dp"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="239dp"
-        android:entries="@array/Hair"
-        />
+        <EditText
+            android:id="@+id/createEdit_Color"
+            android:layout_width="269dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="Color"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="35dp"
+            tools:layout_editor_absoluteY="344dp"
+            android:layout_marginTop="76dp"
+            android:layout_below="@+id/createEdit_SpinnerHair"
+            android:layout_alignStart="@+id/creatEdit_SpinnerEspecies" />
 
-</android.support.constraint.ConstraintLayout>
+        <EditText
+            android:id="@+id/createEdit_Breed"
+            android:layout_width="265dp"
+            android:layout_height="41dp"
+            android:ems="10"
+            android:hint="Raza"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="36dp"
+            tools:layout_editor_absoluteY="394dp"
+            android:layout_below="@+id/createEdit_Color"
+            android:layout_alignStart="@+id/createEdit_Color"
+            android:layout_alignEnd="@+id/createEdit_Color" />
+        <EditText
+            android:id="@+id/createEdit_Weight"
+            android:layout_width="139dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="Peso"
+            android:inputType="numberDecimal"
+            tools:layout_editor_absoluteX="36dp"
+            tools:layout_editor_absoluteY="444dp"
+            android:layout_below="@+id/createEdit_Breed"
+            android:layout_alignEnd="@+id/createedit_SpinnerSex"
+            android:layout_marginTop="16dp" />
+
+
+        <Button
+            android:id="@+id/createEddit_ButtonSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            tools:layout_editor_absoluteX="191dp"
+            tools:layout_editor_absoluteY="444dp"
+            android:layout_alignBottom="@+id/createEdit_Weight"
+            android:layout_alignEnd="@+id/createEdit_Color" />
+
+
+
+
+    </RelativeLayout>
+
+
+</android.support.v4.widget.DrawerLayout>
