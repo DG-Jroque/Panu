@@ -14,7 +14,7 @@ import static java.lang.Integer.parseInt;
 
 public class Pet implements Serializable{
 
-    ArrayList<Vaccines> vaccines;
+    ArrayList<Vaccine> vaccines;
     ArrayList<Medical> medical;
     ArrayList<Deworming> deworming;
 
@@ -75,11 +75,11 @@ public class Pet implements Serializable{
         calculateBirthDay();
     }
 
-    public ArrayList<Vaccines> getVaccines() {
+    public ArrayList<Vaccine> getVaccines() {
         return vaccines;
     }
 
-    public void setVaccines(ArrayList<Vaccines> vaccines) {
+    public void setVaccines(ArrayList<Vaccine> vaccines) {
         this.vaccines = vaccines;
     }
 

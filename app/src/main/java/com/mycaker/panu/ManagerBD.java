@@ -21,9 +21,13 @@ public class ManagerBD extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String ctp = "CREATE TABLE PETS (id_pet INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, breed TEXT, color TEXT, hair TEXT, weigth TEXT, sex TEXT, specie TEXT, picture TEXT);";
         String ctv = "CREATE TABLE VACCINES (id_vacc INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, date TEXT, diluent TEXT, petid INTEGER);";
-        String ctd = "CREATE TABLE MEDICAL (id_med INTEGER PRIMARY KEY AUTOINCREMENT, disease TEXT, date TEXT, petid INTEGER);";
+        String ctm = "CREATE TABLE MEDICAL (id_med INTEGER PRIMARY KEY AUTOINCREMENT, disease TEXT, date TEXT, petid INTEGER);";
         String ctw = "CREATE TABLE DEWORMING (id_dew INTEGER PRIMARY KEY AUTOINCREMENT, product TEXT, date TEXT, petid INTEGER);";
         db.execSQL(ctp);
+        db.execSQL(ctv);
+        db.execSQL(ctm);
+        db.execSQL(ctw);
+
     }
 
     @Override
@@ -86,22 +90,41 @@ public class ManagerBD extends SQLiteOpenHelper {
         String dp = "DELETE FROM PETS WHERE id_pet = " + id + ";";
         db.execSQL(dp);
     }
-    public void invac() throws Exception{
-
+    public void invac(Vaccine v) throws Exception{
+        SQLiteDatabase db = this.getWritableDatabase();
+        String iv = "INSERT INTO VACCINES VALUES (" + v.getName() +
+                ", " + v.getDate() +
+                ", " + v.getDiluent() +
+                ", " + v.getPetId() + ");";
+        db.execSQL(iv);
     }
-    public void delvac() throws Exception{
-
+    public void delvac(int id) throws Exception{
+        SQLiteDatabase db = this.getWritableDatabase();
+        String dv = "DELETE FROM VACCINES WHERE id_vacc = " + id + ";";
+        db.execSQL(dv);
     }
-    public void indes() throws Exception{
-
+    public void inmed(Medical m) throws Exception{
+        SQLiteDatabase db = this.getWritableDatabase();
+        String iv = "INSERT INTO VACCINES VALUES (" + m.getDisease() +
+                ", " + m.getDate() +
+                ", " + m.getPetId() + ");";
+        db.execSQL(iv);
     }
-    public void deldes() throws Exception{
-
+    public void delmed(int id) throws Exception{
+        SQLiteDatabase db = this.getWritableDatabase();
+        String dm = "DELETE FROM MEDICAL WHERE id_med = " + id + ";";
+        db.execSQL(dm);
     }
-    public void indew() throws Exception{
-
+    public void indew(Deworming d) throws Exception{
+        SQLiteDatabase db = this.getWritableDatabase();
+        String iv = "INSERT INTO DEWORMING VALUES (" + d.getProduct() +
+                ", " + d.getDate() +
+                ", " + d.getPetId() + ");";
+        db.execSQL(iv);
     }
     public void deldew() throws Exception{
-
+        SQLiteDatabase db = this.getWritableDatabase();
+        String dd = "DELETE FROM DEWORMING WHERE id_dew = " + id + ";";
+        db.execSQL(dd);
     }
 }
