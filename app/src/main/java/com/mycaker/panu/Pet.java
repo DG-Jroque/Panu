@@ -14,6 +14,10 @@ import static java.lang.Integer.parseInt;
 
 public class Pet implements Serializable{
 
+    ArrayList<Vaccines> vaccines;
+    ArrayList<Medical> medical;
+    ArrayList<Deworming> deworming;
+
     private int age, weigth, id;
     private String name;
     private String birthDay;   //FORMAT "YYYY-MM-DD
@@ -40,7 +44,7 @@ public class Pet implements Serializable{
     }
 
     private String sex ;
-    private ArrayList<String> vaccines, diseases;
+    //private ArrayList<String> vaccines, diseases;
 
     public Pet(){
 
@@ -54,8 +58,10 @@ public class Pet implements Serializable{
         this.color=color;
         this.hair=hair;
         this.imagepath=imagepath;
-        vaccines= new ArrayList<>();
         calculateBirthDay();
+        vaccines= new ArrayList<>();
+        medical = new ArrayList<>();
+        deworming = new ArrayList<>();
     }
 
     public void calculateBirthDay(){
@@ -133,7 +139,8 @@ public class Pet implements Serializable{
     }
     public  String getImagepath(){ return  imagepath;}
     public  void Setimagepath(){this.imagepath=imagepath;}
-    public ArrayList<String> getVaccines() {
+
+    /*public ArrayList<String> getVaccines() {
         return vaccines;
     }
 
@@ -149,7 +156,7 @@ public class Pet implements Serializable{
         this.diseases = diseases;
     }
 
-
+*/
 
 
 }

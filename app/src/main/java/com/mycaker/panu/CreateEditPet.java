@@ -9,10 +9,14 @@ import android.widget.Spinner;
 
 public class CreateEditPet extends AppCompatActivity {
 
+    ManagerBD db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_edit_pet);
+
+        db= new ManagerBD(this, "panu", null, 1);
+
 
         EditText name= (EditText) findViewById(R.id.createEdit_Name);
         EditText color= (EditText) findViewById(R.id.createEdit_Color);
