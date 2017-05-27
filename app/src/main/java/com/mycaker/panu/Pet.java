@@ -72,6 +72,8 @@ public class Pet implements Serializable{
         vaccines= new ArrayList<>();
         medical = new ArrayList<>();
         deworming = new ArrayList<>();
+        this.sex=sex;
+        this.specie=specie;
         calculateBirthDay();
     }
 

@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Panu.iml" filepath="$PROJECT_DIR$/Panu.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/postgresql-42.1.1.jre7/postgresql-42.1.1.jre7.iml" filepath="$PROJECT_DIR$/postgresql-42.1.1.jre7/postgresql-42.1.1.jre7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/postgresql-42.1.1.jre7/postgresql-42.1.1.jre7.iml" filepath="$PROJECT_DIR$/postgresql-42.1.1.jre7/postgresql-42.1.1.jre7.iml" />
     </modules>
   </component>
 </project>

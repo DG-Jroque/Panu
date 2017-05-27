@@ -135,6 +135,7 @@ public class myPets extends AppCompatActivity
             }break;
             case R.id.Addpet:{
                 Intent intent=new Intent(myPets.this,CreateEditPet.class);
+                intent.putExtra("id", 0);
                 startActivity(intent);
             }break;
             case R.id.Associations:{
