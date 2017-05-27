@@ -56,12 +56,13 @@ public class ManagerBD extends SQLiteOpenHelper {
 
     public void inpet(Pet p) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
-        String ip = "INSERT INTO PETS VALUES ( "+null+", " + p.getWeigth() +
+        String ip = "INSERT INTO PETS VALUES ( " + null + ", " +
                 ", " + p.getName() +
                 ", " + p.getBirthDay() +
                 ", " + p.getBreed() +
                 ", " + p.getColor() +
                 ", " + p.getHair() +
+                ", " + p.getWeigth() +
                 ", " + p.getSex() +
                 ", " + p.getSpecie() +
                 ", " + p.getImagepath() + ");";

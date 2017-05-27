@@ -186,7 +186,7 @@ public class Pet implements Serializable{
     public void setHair(String hair) {
         this.hair = hair;
     }
-    public  String getImagepath(){ return  imagepath;}
+    public  String getImagepath(){ return  this.imagepath;}
     public  void Setimagepath(){this.imagepath=imagepath;}
 
 
