@@ -16,7 +16,7 @@ public class CreateEditPet extends AppCompatActivity {
 
         EditText name= (EditText) findViewById(R.id.createEdit_Name);
         EditText color= (EditText) findViewById(R.id.createEdit_Color);
-        EditText breed = (EditText)findViewById(R.id.createEdit_Breed);
+        final EditText breed = (EditText)findViewById(R.id.createEdit_Breed);
         EditText weight = (EditText) findViewById(R.id.createEdit_Weight);
         Spinner sex= (Spinner) findViewById(R.id.createedit_SpinnerSex);
         Spinner specie= (Spinner) findViewById(R.id.creatEdit_SpinnerEspecies);
@@ -68,11 +68,14 @@ public class CreateEditPet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String aux="Guardar";
-                if(aux.compareTo(save.getText().toString())){
+                if(name.getText().toString()!="" && breed.getText().toString()! ){
+                    if(aux.compareTo(save.getText().toString())){
 
-                }else{
+                    }else{
 
+                    }
                 }
+
             }
         });
 
