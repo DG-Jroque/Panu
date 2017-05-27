@@ -13,6 +13,17 @@
         android:layout_height="match_parent">
 
 
+        <Button
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha"
+            tools:layout_editor_absoluteX="191dp"
+            tools:layout_editor_absoluteY="444dp"
+            android:layout_below="@+id/createEdit_SpinnerHair"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp" />
+
         <ImageView
             android:id="@+id/petimage"
             android:layout_width="158dp"

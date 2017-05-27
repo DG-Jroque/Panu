@@ -34,7 +34,8 @@
             android:name=".Associations"
             android:label="@string/title_activity_associations"
             android:screenOrientation="portrait" />
-        <activity android:name=".CreateEditPet" />
+        <activity android:name=".CreateEditPet"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Events"
             android:label="@string/title_activity_events"

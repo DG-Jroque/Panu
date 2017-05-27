@@ -9,6 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import android.view.MenuItem;
 
 public class Events extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
@@ -56,6 +61,8 @@ public class Events extends AppCompatActivity  implements NavigationView.OnNavig
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

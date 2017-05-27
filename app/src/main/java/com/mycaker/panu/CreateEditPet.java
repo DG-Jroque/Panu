@@ -1,14 +1,20 @@
 package com.mycaker.panu;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import java.util.Calendar;
 import android.widget.Spinner;
 
 public class CreateEditPet extends AppCompatActivity {
@@ -36,7 +42,14 @@ public class CreateEditPet extends AppCompatActivity {
         Spinner hair= (Spinner) findViewById(R.id.createEdit_SpinnerHair);
         Spinner size= (Spinner) findViewById(R.id.createEdit_SpinnerSize);
         Button save= (Button) findViewById(R.id.createEddit_ButtonSave);
-
+        Button date=(Button) findViewById(R.id.date);
+        date.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                DialogFragment calendar = new DatePickerFragment();
+               calendar.show(getSupportFragmentManager(),"datePicker");
+            }
+        });
         foto_gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +62,7 @@ public class CreateEditPet extends AppCompatActivity {
         if(id<=0){
             //habilitar los controladores
             name.setFocusable(true);
+            date.setFocusable(true);
             color.setFocusable(true);
             breed.setFocusable(true);
             weight.setFocusable(true);
@@ -58,6 +72,7 @@ public class CreateEditPet extends AppCompatActivity {
             size.setFocusable(true);
             //MODIFICAR EL BOTON PARA SALVAR
             save.setText("Guardar");
+
 
         }
         else{
@@ -130,7 +145,27 @@ public class CreateEditPet extends AppCompatActivity {
             foto_gallery.setImageURI(imageUri);
         }
     }
+    public static class DatePickerFragment extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener {
 
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            // Do something with the date chosen by the user
+
+
+        }
+    }
 
  }
 
