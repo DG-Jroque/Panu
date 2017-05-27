@@ -1,8 +1,11 @@
 package com.mycaker.panu;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import static android.R.attr.id;
 
 /**
  * Created by keam on 26/05/17.
@@ -17,7 +20,7 @@ public class ManagerBD extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String ctp = "CREATE TABLE PETS (id INTEGER PRIMARY KEY ASC, name TEXT, birthday TEXT, breed TEXT, color TEXT, hair TEXT, weigth TEXT, sex TEXT, spercie TEXT;)";
+        String ctp = "CREATE TABLE PETS (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, breed TEXT, color TEXT, hair TEXT, weigth TEXT, sex TEXT, specie TEXT;)";
         db.execSQL(ctp);
     }
 
@@ -28,9 +31,13 @@ public class ManagerBD extends SQLiteOpenHelper {
 
     public void inpet(Pet p) throws Exception{
             SQLiteDatabase db = this.getWritableDatabase();
-            String index = "SELECT id FROM PETS ORDER BY id ASC LIMIT 1;";
-            id = db.execSQL(index);
-            String ip = "INSERT INTO PETS VALUES ("+id+", "+p.getName()+", "+p.getBirthDay()+", "+p.getBreed()+", "+p.getColor()+", "+p.getHair()+", "+p.getWeigth()+", "+p.getSex()+")";
+            /*String index = "SELECT id FROM PETS ORDER BY id ASC LIMIT 1;";
+            Cursor cursor = db.rawQuery(index, null);
+            while(cursor.moveToNext()) {
+                cursor.getString(0);
+                cursor.getInt(1)
+            }*/
+            String ip = "INSERT INTO PETS VALUES ("+p.getName()+", "+p.getBirthDay()+", "+p.getBreed()+", "+p.getColor()+", "+p.getHair()+", "+p.getWeigth()+", "+p.getSex()+", "+p.getSpecie()+")";
     }
     public void edpet(){
 
