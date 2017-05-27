@@ -40,7 +40,7 @@ public class ManagerBD extends SQLiteOpenHelper {
     }
     public void edpet(Pet p){
         SQLiteDatabase db = this.getWritableDatabase();
-        String ip = "UPDATE PETS SET name = "+p.getName()+", birthday = "+p.getBirthDay()+", breed = "+p.getBreed()+", color = "+p.getColor()+", hair = "+p.getHair()+", weigth = "+p.getWeigth()+", sex = "+p.getSex()+", specie = "+p.getSpecie()+"WHERE [condition]";
+        String ip = "UPDATE PETS SET name = "+p.getName()+", birthday = "+p.getBirthDay()+", breed = "+p.getBreed()+", color = "+p.getColor()+", hair = "+p.getHair()+", weigth = "+p.getWeigth()+", sex = "+p.getSex()+", specie = "+p.getSpecie()+"WHERE id = "+p.getId()+";";
 
     }
     public void delpet(){
