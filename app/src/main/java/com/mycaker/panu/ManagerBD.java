@@ -13,6 +13,7 @@ import static android.R.attr.id;
  * Created by keam on 26/05/17.
  */
 
+
 public class ManagerBD extends SQLiteOpenHelper {
 
     public ManagerBD(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
