@@ -56,31 +56,31 @@ public class ManagerBD extends SQLiteOpenHelper {
 
     public void inpet(Pet p) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
-        String ip = "INSERT INTO PETS VALUES ( " +
-                 p.getName() +
-                ", " + p.getBirthDay() +
-                ", " + p.getBreed() +
-                ", " + p.getColor() +
-                ", " + p.getHair() +
-                ", " + p.getWeigth() +
-                ", " + p.getSex() +
-                ", " + p.getSpecie() +
-                ", " + p.getImagepath() + ");";
+        String ip = "INSERT INTO PETS VALUES ( " + null +
+                ", '" + p.getName() +
+                "', '" + p.getBirthDay() +
+                "', '" + p.getBreed() +
+                "', '" + p.getColor() +
+                "', '" + p.getHair() +
+                "', " + p.getWeigth() +
+                ", '" + p.getSex() +
+                "', '" + p.getSpecie() +
+                "', '" + p.getImagepath() + "');";
         db.execSQL(ip);
     }
 
     public void edpet(Pet p) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
-        String ep = "UPDATE PETS SET name = " + p.getName() +
-                ", birthday = " + p.getBirthDay() +
-                ", breed = " + p.getBreed() +
-                ", color = " + p.getColor() +
-                ", hair = " + p.getHair() +
-                ", weigth = " + p.getWeigth() +
-                ", sex = " + p.getSex() +
-                ", specie = " + p.getSpecie() +
-                ", picture = " + p.getImagepath() +
-                " WHERE id_pet = " + p.getId() + ";";
+        String ep = "UPDATE PETS SET name = '" + p.getName() +
+                "', birthday = '" + p.getBirthDay() +
+                "', breed = '" + p.getBreed() +
+                "', color = '" + p.getColor() +
+                "', hair = '" + p.getHair() +
+                "', weigth = " + p.getWeigth() +
+                ", sex = '" + p.getSex() +
+                "', specie = '" + p.getSpecie() +
+                "', picture = '" + p.getImagepath() +
+                "' WHERE id_pet = " + p.getId() + ";";
         db.execSQL(ep);
     }
 
@@ -106,10 +106,10 @@ public class ManagerBD extends SQLiteOpenHelper {
 
     public void invac(Vaccine v) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
-        String iv = "INSERT INTO VACCINES VALUES (" + v.getName() +
-                ", " + v.getDate() +
-                ", " + v.getDiluent() +
-                ", " + v.getPetId() + ");";
+        String iv = "INSERT INTO VACCINES VALUES (" + null + ", '" + v.getName() +
+                "', '" + v.getDate() +
+                "', '" + v.getDiluent() +
+                "', " + v.getPetId() + ");";
         db.execSQL(iv);
     }
 
@@ -135,9 +135,9 @@ public class ManagerBD extends SQLiteOpenHelper {
 
     public void inmed(Medical m) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
-        String im = "INSERT INTO VACCINES VALUES (" + m.getDisease() +
-                ", " + m.getDate() +
-                ", " + m.getPetId() + ");";
+        String im = "INSERT INTO VACCINES VALUES ("+null+", '" + m.getDisease() +
+                "', '" + m.getDate() +
+                "', " + m.getPetId() + ");";
         db.execSQL(im);
     }
 
@@ -163,9 +163,9 @@ public class ManagerBD extends SQLiteOpenHelper {
 
     public void indew(Deworming d) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
-        String id = "INSERT INTO DEWORMING VALUES (" + d.getProduct() +
-                ", " + d.getDate() +
-                ", " + d.getPetId() + ");";
+        String id = "INSERT INTO DEWORMING VALUES ("+null+", '" + d.getProduct() +
+                "', '" + d.getDate() +
+                "', " + d.getPetId() + ");";
         db.execSQL(id);
     }
 
