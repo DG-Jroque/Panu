@@ -1,10 +1,14 @@
 package com.mycaker.panu;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 public class CreateEditPet extends AppCompatActivity {
@@ -12,11 +16,14 @@ public class CreateEditPet extends AppCompatActivity {
     ManagerBD db;
     int id=0;
     Pet pet;
+    private static final int PICK_IMAGE = 100;
+    Uri imageUri;
+    ImageView foto_gallery;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_edit_pet);
-
+        foto_gallery = (ImageView)findViewById(R.id.petimage);
         db= new ManagerBD(this, "panu", null, 1);
 
 
@@ -30,7 +37,26 @@ public class CreateEditPet extends AppCompatActivity {
         Spinner size= (Spinner) findViewById(R.id.createEdit_SpinnerSize);
         Button save= (Button) findViewById(R.id.createEddit_ButtonSave);
 
+        foto_gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
+    }
 
+    private void openGallery(){
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+            imageUri = data.getData();
+            foto_gallery.setImageURI(imageUri);
+        }
+    }
 
         id= getIntent().getIntExtra("id", -1);
         //en caso de no mandar una mascota, crear una nueva
@@ -96,7 +122,6 @@ public class CreateEditPet extends AppCompatActivity {
                 }
 
             }
-        });
+        };
+ }
 
-    }
-}

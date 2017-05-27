@@ -8,13 +8,14 @@
     tools:context="com.mycaker.panu.CreateEditPet">
 
 
-    <ImageButton
-        android:id="@+id/imageButton2"
+    <ImageView
+        android:id="@+id/petimage"
         android:layout_width="158dp"
         android:layout_height="126dp"
-        app:srcCompat="@mipmap/ic_launcher"
+        app:srcCompat="@drawable/ic_menu_gallery"
         tools:layout_editor_absoluteX="90dp"
         tools:layout_editor_absoluteY="7dp" />
+
 
     <EditText
         android:id="@+id/createEdit_Name"
