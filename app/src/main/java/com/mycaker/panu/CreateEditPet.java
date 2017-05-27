@@ -10,6 +10,8 @@ import android.widget.Spinner;
 public class CreateEditPet extends AppCompatActivity {
 
     ManagerBD db;
+    int id=0;
+    Pet pet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +32,18 @@ public class CreateEditPet extends AppCompatActivity {
 
 
 
-        Integer id= getIntent().getIntExtra("id", -1);
+        id= getIntent().getIntExtra("id", -1);
         //en caso de no mandar una mascota, crear una nueva
-        if(id>=0){
+        if(id<=0){
             //habilitar los controladores
-
+            name.setFocusable(true);
+            color.setFocusable(true);
+            breed.setFocusable(true);
+            weight.setFocusable(true);
+            sex.setFocusable(true);
+            specie.setFocusable(true);
+            hair.setFocusable(true);
+            size.setFocusable(true);
             //MODIFICAR EL BOTON PARA SALVAR
             save.setText("Guardar");
 
@@ -75,6 +84,12 @@ public class CreateEditPet extends AppCompatActivity {
                 if(name.getText().toString()!="" && breed.getText().toString()! ){
                     if(aux.compareTo(save.getText().toString())){
 
+                        //Es una edicion de la mascota que se tiene
+                        if(id>0){}
+                        //se crea una inserción
+                        else{
+
+                        }
                     }else{
 
                     }
