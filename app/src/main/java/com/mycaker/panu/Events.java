@@ -15,13 +15,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class Events extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
-
+    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
+        sqlThread.start();
+        tv=(TextView) findViewById(R.id.pruebasql);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_events);
@@ -31,6 +34,7 @@ public class Events extends AppCompatActivity  implements NavigationView.OnNavig
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
     }
     @Override
@@ -42,6 +46,7 @@ public class Events extends AppCompatActivity  implements NavigationView.OnNavig
             super.onBackPressed();
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -103,4 +108,25 @@ public class Events extends AppCompatActivity  implements NavigationView.OnNavig
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    Thread sqlThread = new Thread() {
+        public void run() {
+            try {
+                Class.forName("org.postgresql.Driver");
+                // "jdbc:postgresql://IP:PUERTO/DB", "USER", "PASSWORD");
+                Connection conn = DriverManager.getConnection(
+                        "jdbc:postgresql://siccuautla.ddns.net:5432/panu", "panu", "123456");
+                //En el stsql se puede agregar cualquier consulta SQL deseada.
+                String stsql = "Select version()";
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery(stsql);
+                rs.next();
+                System.out.println(rs.getString(1));
+                conn.close();
+            } catch (SQLException se) {
+                System.out.println("oops! No se puede conectar. Error: " + se.toString());
+            } catch (ClassNotFoundException e) {
+                System.out.println("oops! No se encuentra la clase. Error: " + e.getMessage());
+            }
+        }
+    };
 }

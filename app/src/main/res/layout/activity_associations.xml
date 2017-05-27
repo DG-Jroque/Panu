@@ -7,7 +7,6 @@
     android:id="@+id/drawer_associations"
     tools:context="com.mycaker.panu.Associations">
 
-
     <include
         layout="@layout/app_bar_my_pets"
         android:layout_width="match_parent"
