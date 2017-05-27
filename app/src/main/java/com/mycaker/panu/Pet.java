@@ -14,9 +14,32 @@ import static java.lang.Integer.parseInt;
 
 public class Pet implements Serializable{
 
-    private int age, weigth;
-    private String name, birthDay   //FORMAT "YYYY-MM-DD"
-            , breed, color, hair, imagepath ;
+    private int age, weigth, id;
+    private String name;
+    private String birthDay;   //FORMAT "YYYY-MM-DD
+    private String breed;
+    private String color;
+    private String hair;
+    private String imagepath;
+    private String specie;
+
+    public String getSpecie() {
+        return specie;
+    }
+
+    public void setSpecie(String specie) {
+        this.specie = specie;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    private String sex ;
     private ArrayList<String> vaccines, diseases;
 
     public Pet(){
