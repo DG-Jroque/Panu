@@ -31,13 +31,21 @@ public class Pet{
     }
 
     private int id;
-    private String name;
+    private String name, size;
     private String birthDay;   //FORMAT "YYYY-MM-DD
     private String breed;
     private String color;
     private String hair;
     private String imagepath;
     private String specie;
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 
     public String getSpecie() {
         return specie;
@@ -61,7 +69,7 @@ public class Pet{
     }
 
     public Pet(int weigth, String name, String birthDay, String breed, String color, String hair, String sex, String specie,
-               String imagepath){
+               String imagepath, String size){
         this.weigth= weigth;
         this.name= name;
         this.birthDay= birthDay;//FORMAT "YYYY-MM-DD"
@@ -74,6 +82,7 @@ public class Pet{
         deworming = new ArrayList<>();
         this.sex=sex;
         this.specie=specie;
+        this.size=size;
         calculateBirthDay();
     }
 

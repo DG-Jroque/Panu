@@ -48,46 +48,11 @@ public class myPets extends AppCompatActivity
     }
 
     public void savePets(){
-        FileOutputStream fos = null;
-        ObjectOutputStream os = null;
-        try {
-            fos = openFileOutput("PanuPets_File", MODE_PRIVATE);
-            os = new ObjectOutputStream(fos);
-            os.writeObject(pets);
-            os.close();
-            fos.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Error al Guardar los datos, vuelva a intentarlo", Toast.LENGTH_LONG).show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Error al Guardar los datos, vuelva a intentarlo", Toast.LENGTH_LONG).show();
-        }
+        //Ya no se va a implementar
     }
 
     public void loadPets(){
-        FileInputStream fis = null;
-        ObjectInputStream is = null;
-        try {
-            fis = openFileInput("PanuPets_File");
-            is = new ObjectInputStream(fis);
-            pets= (ArrayList<Pet>) is.readObject();
-            is.close();
-            fis.close();
-        } catch (FileNotFoundException e) {
-            pets= new ArrayList<Pet>();
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Aun no se tienen mascotas", Toast.LENGTH_LONG).show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            pets= new ArrayList<Pet>();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            pets= new ArrayList<Pet>();
-        }
+        //cargar mascotas de la base de datos sqlite y guardarlas en un arraylist de mascotas...
     }
 
     @Override

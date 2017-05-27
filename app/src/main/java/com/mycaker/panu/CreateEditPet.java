@@ -7,11 +7,14 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.net.URL;
 
 import static java.lang.Integer.parseInt;
 
@@ -81,6 +84,7 @@ public class CreateEditPet extends AppCompatActivity {
             //Si se mandó una mascota desde la actividad anterior
             //insertar el nombre en el EditText name
 
+
             //Deshabilitar los textos y
             name.setFocusable(false);
             color.setFocusable(false);
@@ -91,7 +95,47 @@ public class CreateEditPet extends AppCompatActivity {
             hair.setFocusable(false);
             size.setFocusable(false);
 
+            try {
+                pet= (Pet) db.showpet(id);
+            } catch (Exception e) {
+                e.printStackTrace();
+                id=0;
+            }
             //ingresar los valores que se tienen de la mascota
+            name.setText(pet.getName());
+            color.setText(pet.getColor());
+            breed.setText(pet.getBreed());
+            weight.setText(pet.getWeigth());
+
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Sex, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            sex.setAdapter(adapter);
+                int spinnerPosition = adapter.getPosition(pet.getSex());
+                sex.setSelection(spinnerPosition);
+
+            ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.Hair, android.R.layout.simple_spinner_item);
+            adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            specie.setAdapter(adapter1);
+            int spinnerPosition1 = adapter.getPosition(pet.getHair());
+            hair.setSelection(spinnerPosition1);
+
+            ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.species, android.R.layout.simple_spinner_item);
+            adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            specie.setAdapter(adapter2);
+            int spinnerPosition2 = adapter.getPosition(pet.getSpecie());
+            specie.setSelection(spinnerPosition2);
+
+            ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.Size, android.R.layout.simple_spinner_item);
+            adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            specie.setAdapter(adapter3);
+            int spinnerPosition3 = adapter.getPosition(pet.getSize());
+            specie.setSelection(spinnerPosition2);
+
+            URL url = new URL("http://www.google.com"); //Some instantiated URL object
+            URI uri = url.toURI();
+            foto_gallery.setImageURI();
+
+
 
 
             //Editar el boton guardar
@@ -103,51 +147,80 @@ public class CreateEditPet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String aux="Guardar";
-                if(name.getText().toString()!="" && breed.getText().toString()!="" ){
-                    if(true){
+                if(save.getText().toString()==aux){
+
+                    if(name.getText().toString()!="" &&
+                            date.getText().toString()!="" &&
+                            breed.getText().toString()!="" &&
+                            color.getText().toString()!="" &&
+                            hair.getSelectedItem().toString()!="" &&
+                            sex.getSelectedItem().toString()!="" &&
+                            specie.getSelectedItem().toString()!="" &&
+                            imageUri.toString()!="" ){
+
 
                         //Es una edicion de la mascota que se tiene
-                        if(id>0){}
+                        if(id>0){
+                            //realizar una insersión con un id*****
+                            try {
+                                db.edpet(pet);
+                                Toast.makeText(getApplicationContext(), "Mascota Guardada", Toast.LENGTH_LONG).show();
+                            } catch (Exception e) {
+                                Toast.makeText(getApplicationContext(), "Error al cargar la mascota", Toast.LENGTH_LONG).show();
+                            }
+                            Intent intent= new Intent(CreateEditPet.this, myPets.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        }
                         //se crea una inserción
                         else{
-
-                            //realizar una insersión con un id*****
-                               Pet p= new Pet(
-                                        parseInt(weight.getText().toString()),
-                                        name.getText().toString(),
-                                       date.getText().toString(),
-                                       breed.getText().toString(),
-                                       color.getText().toString(),
-                                       hair.getSelectedItem().toString(),
-                                       sex.getSelectedItem().toString(),
-                                       specie.getSelectedItem().toString(),
-                                       "direccion");
+                            //realizar una insersión SIN un id*****
+                            Pet p= new Pet(
+                                    parseInt(weight.getText().toString()),
+                                    name.getText().toString(),
+                                    date.getText().toString(),
+                                    breed.getText().toString(),
+                                    color.getText().toString(),
+                                    hair.getSelectedItem().toString(),
+                                    sex.getSelectedItem().toString(),
+                                    specie.getSelectedItem().toString(),
+                                    imageUri.toString(),
+                                    size.getSelectedItem().toString());
                             try {
                                 db.inpet(p);
+                                Toast.makeText(getApplicationContext(), "Mascota Guardada", Toast.LENGTH_LONG).show();
                             } catch (Exception e) {
-                                Toast.makeText(getApplicationContext(), "Error al agregar mascota"+ e.toString(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Error al agregar mascota", Toast.LENGTH_LONG).show();
+
                             }
-                        }
-                    }else{
-                        //realizar una insersión SIN un id*****
-                        Pet p= new Pet(
-                                parseInt(weight.getText().toString()),
-                                name.getText().toString(),
-                                date.getText().toString(),
-                                breed.getText().toString(),
-                                color.getText().toString(),
-                                hair.getSelectedItem().toString(),
-                                sex.getSelectedItem().toString(),
-                                specie.getSelectedItem().toString(),
-                                "direccion");
-                        try {
-                            db.inpet(p);
-                        } catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "Error al agregar mascota", Toast.LENGTH_LONG).show();
+                            Intent intent= new Intent(CreateEditPet.this, myPets.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+
                         }
 
+
+                    }else{
+                        name.setFocusable(true);
+                        date.setFocusable(true);
+                        color.setFocusable(true);
+                        breed.setFocusable(true);
+                        weight.setFocusable(true);
+                        sex.setFocusable(true);
+                        specie.setFocusable(true);
+                        hair.setFocusable(true);
+                        size.setFocusable(true);
+                        //MODIFICAR EL BOTON PARA SALVAR
+                        save.setText("Guardar");
+
                     }
+
                 }
+
+
+
+
+
 
             }
         });
