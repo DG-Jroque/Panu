@@ -20,15 +20,32 @@ public class ManagerBD extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String ctp = "CREATE TABLE PETS (id_pet INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, breed TEXT, color TEXT, hair TEXT, weigth TEXT, sex TEXT, specie TEXT, picture TEXT);";
-        String ctv = "CREATE TABLE VACC (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, breed TEXT, color TEXT, hair TEXT, weigth TEXT, sex TEXT, specie TEXT);";
-        String ctd = "CREATE TABLE PETS (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, breed TEXT, color TEXT, hair TEXT, weigth TEXT, sex TEXT, specie TEXT);";
-        String ctw = "CREATE TABLE PETS (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, breed TEXT, color TEXT, hair TEXT, weigth TEXT, sex TEXT, specie TEXT);";
+        String ctv = "CREATE TABLE VACCINES (id_vacc INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, date TEXT, diluent TEXT, petid INTEGER);";
+        String ctd = "CREATE TABLE MEDICAL (id_med INTEGER PRIMARY KEY AUTOINCREMENT, disease TEXT, date TEXT, petid INTEGER);";
+        String ctw = "CREATE TABLE DEWORMING (id_dew INTEGER PRIMARY KEY AUTOINCREMENT, product TEXT, date TEXT, petid INTEGER);";
         db.execSQL(ctp);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    public Pet showpet(int id) throws Exception{
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sp = "SELECT * FROM PETS WHERE id_pet = " + id + ";";
+        Cursor cursor = db.rawQuery(sp, null);
+        cursor.moveToNext();
+        Pet pe = new Pet(cursor.getInt(6),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(7),cursor.getString(8),cursor.getString(9));
+        return pe;
+    }
+
+    public int countpet() throws Exception{
+        SQLiteDatabase db = this.getWritableDatabase();
+        String cp = "SELECT count(id_pet) FROM PETS;";
+        Cursor cursor = db.rawQuery(cp, null);
+        cursor.moveToNext();
+        return cursor.getInt(0);
     }
 
     public void inpet(Pet p) throws Exception{
@@ -39,33 +56,52 @@ public class ManagerBD extends SQLiteOpenHelper {
                 cursor.getString(0);
                 cursor.getInt(1)
             }*/
-        String ip = "INSERT INTO PETS VALUES ("+p.getName()+", "+p.getBirthDay()+", "+p.getBreed()+", "+p.getColor()+", "+p.getHair()+", "+p.getWeigth()+", "+p.getSex()+", "+p.getSpecie()+", "+p.getImagepath()+");";
+        String ip = "INSERT INTO PETS VALUES (" + p.getName() +
+                ", " + p.getBirthDay() +
+                ", " + p.getBreed() +
+                ", " + p.getColor() +
+                ", " + p.getHair() +
+                ", " + p.getWeigth() +
+                ", " + p.getSex() +
+                ", " + p.getSpecie() +
+                ", " + p.getImagepath() + ");";
         db.execSQL(ip);
     }
-    public void edpet(Pet p){
+    public void edpet(Pet p) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
-        String ep = "UPDATE PETS SET name = "+p.getName()+", birthday = "+p.getBirthDay()+", breed = "+p.getBreed()+", color = "+p.getColor()+", hair = "+p.getHair()+", weigth = "+p.getWeigth()+", sex = "+p.getSex()+", specie = "+p.getSpecie()+", picture = "+p.getImagepath()+" WHERE id_pet = "+p.getId()+";";
+        String ep = "UPDATE PETS SET name = " + p.getName() +
+                ", birthday = " + p.getBirthDay() +
+                ", breed = " + p.getBreed() +
+                ", color = " + p.getColor() +
+                ", hair = " + p.getHair() +
+                ", weigth = " + p.getWeigth() +
+                ", sex = " + p.getSex() +
+                ", specie = " + p.getSpecie() +
+                ", picture = " + p.getImagepath() +
+                " WHERE id_pet = " + p.getId() + ";";
         db.execSQL(ep);
     }
-    public void delpet(){
+    public void delpet(int id) throws Exception{
+        SQLiteDatabase db = this.getWritableDatabase();
+        String dp = "DELETE FROM PETS WHERE id_pet = " + id + ";";
+        db.execSQL(dp);
+    }
+    public void invac() throws Exception{
 
     }
-    public void invac(){
+    public void delvac() throws Exception{
 
     }
-    public void delvac(){
+    public void indes() throws Exception{
 
     }
-    public void indes(){
+    public void deldes() throws Exception{
 
     }
-    public void deldes(){
+    public void indew() throws Exception{
 
     }
-    public void indew(){
-
-    }
-    public void deldew(){
+    public void deldew() throws Exception{
 
     }
 }
