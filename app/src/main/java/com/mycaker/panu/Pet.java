@@ -60,7 +60,8 @@ public class Pet implements Serializable{
 
     }
 
-    public Pet(int weigth, String name, String birthDay, String breed, String color, String hair ){
+    public Pet(int weigth, String name, String birthDay, String breed, String color, String hair. String sex, String specie,
+               String imagepath){
         this.weigth= weigth;
         this.name= name;
         this.birthDay= birthDay;//FORMAT "YYYY-MM-DD"
