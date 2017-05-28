@@ -69,7 +69,6 @@ public class CreateEditPet extends AppCompatActivity {
                 openGallery();
             }
         });
-        Toast.makeText(getApplicationContext(), "Error1", Toast.LENGTH_LONG).show();
         //en caso de no mandar una mascota, crear una nueva
         if(id<=0){
             //habilitar los controladores

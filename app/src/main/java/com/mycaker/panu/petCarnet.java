@@ -60,7 +60,7 @@ public class petCarnet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent a =new Intent(petCarnet.this, CreateEditPet.class);
-                a.putExtra("id",0);
+                a.putExtra("id",id);
                 startActivity(a);
             }
         });
