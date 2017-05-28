@@ -32,7 +32,7 @@ public class CreateEditPet extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
     ImageView foto_gallery;
-    Bitmap bitmap;
+   // Bitmap bitmap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +71,7 @@ public class CreateEditPet extends AppCompatActivity {
         });
 
         //en caso de no mandar una mascota, crear una nueva
-        if(id<=0){
+ /*       if(id<=0){
             //habilitar los controladores
             name.setFocusable(true);
             date.setFocusable(true);
@@ -88,6 +88,7 @@ public class CreateEditPet extends AppCompatActivity {
 
         }
         else{
+            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
             //Si se mandó una mascota desde la actividad anterior
             //insertar el nombre en el EditText name
 
@@ -145,7 +146,7 @@ public class CreateEditPet extends AppCompatActivity {
 
             //Editar el boton guardar
             save.setText("Editar");
-        }
+        }*/
 
         //función para el boton de guardar-editar
         save.setOnClickListener(new View.OnClickListener() {

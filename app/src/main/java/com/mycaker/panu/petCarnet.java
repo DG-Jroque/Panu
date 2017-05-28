@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -42,20 +43,61 @@ public class petCarnet extends AppCompatActivity {
                         "\n Color: "+ p.getColor() +
                         "\t Fecha de nacimiento: "+p.getBirthDay()+
                         "\n Peso: "+p.getWeigth());
+
+        ImageButton epb=(ImageButton) findViewById(R.id.editpetbutton);
+        epb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*Intent i = new Intent(petCarnet.this, CreateEditPet.class );
+                i.putExtra("id", p.getId());
+                startActivity(i);*/
+                Toast.makeText(petCarnet.this,"Yes",Toast.LENGTH_LONG).show();
+            }
+        });
+        ImageButton vab=(ImageButton) findViewById(R.id.imageButton);
+        vab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VacunasL();
+            }
+        });
+
+        ImageButton medb=(ImageButton) findViewById(R.id.editpetbutton);
+        medb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MedicalL();
+            }
+        });
+
+        ImageButton dwb=(ImageButton) findViewById(R.id.imageButton4);
+        dwb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DesparaL();
+            }
+        });
+
+
     }
-    public void VacunasL(View view) {
-        Intent i = new Intent(this, Vaccine.class );
+    public void VacunasL() {
+        Intent i = new Intent(petCarnet.this, Vaccine.class );
         startActivity(i);
     }
-    public void DesparaL(View view) {
-        Intent i = new Intent(this, Deworming.class );
+    public void DesparaL() {
+        Intent i = new Intent(petCarnet.this, Deworming.class );
         startActivity(i);
     }
-    /*
-    public void (View view) {
-        Intent i = new Intent(this, AcercaDe.class );
+    public void MedicalL() {
+        Intent i = new Intent(petCarnet.this, Medical.class );
         startActivity(i);
-    }*/
+    }
+    public void EditL() {
+        Intent i = new Intent(petCarnet.this, CreateEditPet.class );
+        i.putExtra("id", p.getId());
+        startActivity(i);
+    }
+
 
 
 
