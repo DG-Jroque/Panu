@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +17,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TableRow;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
@@ -26,13 +32,20 @@ import java.util.ArrayList;
 public class myPets extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    ManagerBD db;
     private ArrayList<Pet>pets;
+    private ArrayList<String>img= new ArrayList<>();
+    private ArrayList<String> names= new ArrayList<>();
+     ViewPager vp;
+    customSwipe cs;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_pets);
+
+        pets= new ArrayList<>();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -43,7 +56,26 @@ public class myPets extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        loadPets();
+
+
+        try {
+            db= new ManagerBD(this, "panu", null, 1);
+            loadPets();
+            vp= (ViewPager) findViewById(R.id.viewPager);
+
+            MiFragmento fm= new MiFragmento();
+            MiFragmento fm1= new MiFragmento();
+            MiFragmento fm2= new MiFragmento();
+            ArrayList<Fragment>fragments= new ArrayList<>();
+            fragments.add(fm);
+            fragments.add(fm1);
+            fragments.add(fm2);
+            vp.setAdapter(new AdaptadorPaginas(getSupportFragmentManager(),fragments));
+
+
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Error de viewPager"+e.toString(), Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -51,8 +83,21 @@ public class myPets extends AppCompatActivity
         //Ya no se va a implementar
     }
 
-    public void loadPets(){
+    public void loadPets() throws Exception {
         //cargar mascotas de la base de datos sqlite y guardarlas en un arraylist de mascotas...
+        int petNum= db.countpet();
+        Toast.makeText(getApplicationContext(), "numero de tuplas "+petNum, Toast.LENGTH_LONG).show();
+        for(int i=0; i<petNum;i++){
+            try{
+                Pet a= (Pet)db.showpet(i+1);
+                pets.add(a);
+                img.add(a.getImagepath());
+                names.add(a.getName());
+            }
+            catch(Exception ex){
+                Toast.makeText(getApplicationContext(), "Error en for "+ex.toString(), Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override

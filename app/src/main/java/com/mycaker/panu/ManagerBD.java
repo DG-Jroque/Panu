@@ -21,7 +21,7 @@ public class ManagerBD extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String ctp = "CREATE TABLE PETS (id_pet INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, breed TEXT, color TEXT, hair TEXT, weigth TEXT, sex TEXT, specie TEXT, picture TEXT);";
+        String ctp = "CREATE TABLE PETS (id_pet INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, breed TEXT, color TEXT, hair TEXT, weigth TEXT, sex TEXT, specie TEXT, picture TEXT, size TEXT);";
         String ctv = "CREATE TABLE VACCINES (id_vacc INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, date TEXT, diluent TEXT, petid INTEGER);";
         String ctm = "CREATE TABLE MEDICAL (id_med INTEGER PRIMARY KEY AUTOINCREMENT, disease TEXT, date TEXT, petid INTEGER);";
         String ctw = "CREATE TABLE DEWORMING (id_dew INTEGER PRIMARY KEY AUTOINCREMENT, product TEXT, date TEXT, petid INTEGER);";
@@ -43,7 +43,17 @@ public class ManagerBD extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(sp, null);
         cursor.moveToNext();
         //agregar el atributo size al crear el objeto Pet
-        Pet pe = new Pet(cursor.getInt(6),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(7),cursor.getString(8),cursor.getString(9),"");
+        Pet pe = new Pet(cursor.getInt(6),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(7),cursor.getString(8),cursor.getString(9),cursor.getString(10));
+        return pe;
+    }
+
+    public String showpetstring(int id) throws Exception{
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sp = "SELECT * FROM PETS WHERE id_pet = " + id + ";";
+        Cursor cursor = db.rawQuery(sp, null);
+        cursor.moveToNext();
+        //agregar el atributo size al crear el objeto Pet
+        String pe = " "+cursor.getInt(6)+cursor.getString(1)+cursor.getString(2)+cursor.getString(3);
         return pe;
     }
 
@@ -66,7 +76,8 @@ public class ManagerBD extends SQLiteOpenHelper {
                 "', " + p.getWeigth() +
                 ", '" + p.getSex() +
                 "', '" + p.getSpecie() +
-                "', '" + p.getImagepath() + "');";
+                "', '" + p.getImagepath() +
+                "', '" + p.getSize() + "');";
         db.execSQL(ip);
     }
 
@@ -81,6 +92,7 @@ public class ManagerBD extends SQLiteOpenHelper {
                 ", sex = '" + p.getSex() +
                 "', specie = '" + p.getSpecie() +
                 "', picture = '" + p.getImagepath() +
+                "', size = '" + p.getSize() +
                 "' WHERE id_pet = " + p.getId() + ";";
         db.execSQL(ep);
     }
