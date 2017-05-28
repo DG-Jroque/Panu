@@ -42,6 +42,18 @@ public class petCarnet extends AppCompatActivity {
                         "\t Fecha de nacimiento: "+p.getBirthDay()+
                         "\n Peso: "+p.getWeigth());
     }
+    public void VacunasL(View view) {
+        Intent i = new Intent(this, AcercaDe.class );
+        startActivity(i);
+    }
+    public void DesparaL(View view) {
+        Intent i = new Intent(this, AcercaDe.class );
+        startActivity(i);
+    }
+    public void (View view) {
+        Intent i = new Intent(this, AcercaDe.class );
+        startActivity(i);
+    }
 
 
 

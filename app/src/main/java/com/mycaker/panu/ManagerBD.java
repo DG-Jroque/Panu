@@ -65,6 +65,14 @@ public class ManagerBD extends SQLiteOpenHelper {
         return cursor.getInt(0);
     }
 
+    public int lastid() throws Exception{
+        SQLiteDatabase db = this.getWritableDatabase();
+        String cp = "SELECT id_pet FROM PETS ORDER BY id DESC LIMIT 1;";
+        Cursor cursor = db.rawQuery(cp, null);
+        cursor.moveToNext();
+        return cursor.getInt(0);
+    }
+
     public void inpet(Pet p) throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
         String ip = "INSERT INTO PETS VALUES ( " + null +
