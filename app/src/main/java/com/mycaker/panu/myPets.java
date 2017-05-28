@@ -17,8 +17,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
@@ -37,17 +41,16 @@ public class myPets extends AppCompatActivity
     private ArrayList<String>img= new ArrayList<>();
     private ArrayList<String> names= new ArrayList<>();
      ViewPager vp;
+    Pet e1,e2;
     customSwipe cs;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_pets);
-
-        pets= new ArrayList<>();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        pets=new ArrayList<>();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_myPets);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -74,10 +77,7 @@ public class myPets extends AppCompatActivity
             //Toast.makeText(getApplicationContext(), "Error de viewPager"+e.toString(), Toast.LENGTH_LONG).show();
         }
 
-    }
 
-    public void savePets(){
-        //Ya no se va a implementar
     }
 
     public void loadPets() throws Exception {
@@ -97,6 +97,8 @@ public class myPets extends AppCompatActivity
             }
         }
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -168,4 +170,6 @@ public class myPets extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-}
+
+
+    }

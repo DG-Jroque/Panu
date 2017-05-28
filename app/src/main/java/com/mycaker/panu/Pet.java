@@ -30,6 +30,11 @@ public class Pet implements  Serializable{
         this.id = id;
     }
 
+    public Pet(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     private int id;
     private String name, size;
     private String birthDay;   //FORMAT "YYYY-MM-DD

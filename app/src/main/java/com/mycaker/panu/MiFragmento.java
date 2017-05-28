@@ -1,5 +1,6 @@
 package com.mycaker.panu;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -28,6 +29,9 @@ import java.io.FileInputStream;
 public class MiFragmento extends Fragment {
     Pet pet;
 
+    public MiFragmento(){}
+
+    @SuppressLint("ValidFragment")
     public MiFragmento(Pet pet){
         this.pet=pet;
     }
@@ -40,10 +44,10 @@ public class MiFragmento extends Fragment {
         TextView tx= (TextView) view.findViewById(R.id.textView4);
         ImageButton imageButton= (ImageButton) view.findViewById(R.id.imageView10);
 
-        String ruta = pet.getImagepath();
-        ruta = ruta.substring(ruta.lastIndexOf("DCIM")+4);
+        //String ruta = pet.getImagepath();
+        //ruta = ruta.substring(ruta.lastIndexOf("DCIM")+4);
 
-        ruta = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + ruta;
+        //ruta = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + ruta;
 
         tx.setText(pet.getName());
         //Uri uri = Uri.parse(pet.getImagepath());
@@ -57,8 +61,7 @@ public class MiFragmento extends Fragment {
         Uri uri = Uri.fromFile(imgFile);
         imageButton.setImageURI(uri);
 
-        Intent i = new Intent(null,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
 
 
 

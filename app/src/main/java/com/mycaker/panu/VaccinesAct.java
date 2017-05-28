@@ -20,11 +20,11 @@ public class VaccinesAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccines);
-        Intent intent= getIntent();
-        Bundle b = intent.getExtras();
-        int id= (int) b.get("id");
+
+        //Pet p= (Pet)getIntent().getSerializableExtra("id");
         TableLayout tl= (TableLayout) findViewById(R.id.tablelayoutvaccine);
         db= new ManagerBD(this, "panu", null, 1);
+        final int id = getIntent().getIntExtra("id",1);
         try {
             Vaccines = db.showvacc(id);
         } catch (Exception e) {
