@@ -5,59 +5,90 @@ package com.mycaker.panu;
  */
 
 public class Association {
+    private int id_asoc,numero;
+    private String correo,password,calle,colonia,ciudad,estado,telefono;
+
+    public Association(int id_asoc, int numero, String correo, String password, String calle, String colonia, String ciudad, String estado, String telefono) {
+        this.id_asoc = id_asoc;
+        this.numero = numero;
+        this.correo = correo;
+        this.password = password;
+        this.calle = calle;
+        this.colonia = colonia;
+        this.ciudad = ciudad;
+        this.estado = estado;
+        this.telefono = telefono;
+    }
+
     public int getId_asoc() {
-        return Id_asoc;
+        return id_asoc;
     }
 
     public void setId_asoc(int id_asoc) {
-        Id_asoc = id_asoc;
+        this.id_asoc = id_asoc;
     }
 
-    public String getName() {
-        return name;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
-    public String getMail() {
-        return mail;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getCellphone() {
-        return cellphone;
+    public String getPassword() {
+        return password;
     }
 
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getCalle() {
+        return calle;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setCalle(String calle) {
+        this.calle = calle;
     }
 
-    private int Id_asoc;
-    private String name;
-    private String mail;
-    private String cellphone;
-    private String direccion;
-    public Association(){
-
+    public String getColonia() {
+        return colonia;
     }
-    public Association(int Id_asoc, String name, String mail, String cellphone, String direccion){
-        this.Id_asoc=Id_asoc;
-        this.name=name;
-        this.mail=mail;
-        this.cellphone=cellphone;
-        this.direccion=direccion;
+
+    public void setColonia(String colonia) {
+        this.colonia = colonia;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }

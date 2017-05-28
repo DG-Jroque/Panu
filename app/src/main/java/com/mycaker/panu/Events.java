@@ -1,6 +1,10 @@
 package com.mycaker.panu;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -8,23 +12,32 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class Events extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
-    TextView tv;
+    Button btnHit;
+    TextView txtJson;
+    ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
-        sqlThread.start();
-        tv=(TextView) findViewById(R.id.pruebasql);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_events);
@@ -35,8 +48,8 @@ public class Events extends AppCompatActivity  implements NavigationView.OnNavig
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_events);
@@ -61,9 +74,6 @@ public class Events extends AppCompatActivity  implements NavigationView.OnNavig
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -108,25 +118,5 @@ public class Events extends AppCompatActivity  implements NavigationView.OnNavig
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    Thread sqlThread = new Thread() {
-        public void run() {
-            try {
-                Class.forName("org.postgresql.Driver");
-                // "jdbc:postgresql://IP:PUERTO/DB", "USER", "PASSWORD");
-                Connection conn = DriverManager.getConnection(
-                        "jdbc:postgresql://siccuautla.ddns.net:5432/panu", "panu", "123456");
-                //En el stsql se puede agregar cualquier consulta SQL deseada.
-                String stsql = "Select version()";
-                Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery(stsql);
-                rs.next();
-                System.out.println(rs.getString(1));
-                conn.close();
-            } catch (SQLException se) {
-                System.out.println("oops! No se puede conectar. Error: " + se.toString());
-            } catch (ClassNotFoundException e) {
-                System.out.println("oops! No se encuentra la clase. Error: " + e.getMessage());
-            }
-        }
-    };
+
 }

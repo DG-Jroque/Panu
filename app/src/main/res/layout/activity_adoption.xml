@@ -7,6 +7,12 @@
     android:id="@+id/drawer_adoption"
     tools:context="com.mycaker.panu.Adoption">
 
+
+   <ListView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/lv"></ListView>
+
     <include
         layout="@layout/app_bar_my_pets"
         android:layout_width="match_parent"
