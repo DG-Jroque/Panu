@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.Space;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,7 +43,7 @@ public class Events extends AppCompatActivity  implements NavigationView.OnNavig
                 TextView text = (TextView) view.findViewById(R.id.MainText);
 
                 title.setText(disponibles.get(pos).getNombre());
-                description.setText(disponibles.get(pos).getAsoc_id());
+                description.setText(disponibles.get(pos).getColonia());
                 text.setText(disponibles.get(pos).getCiudad());
             }
         });

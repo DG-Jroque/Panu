@@ -8,7 +8,7 @@
         <menu>
             <item
                 android:id="@+id/Mypets"
-                android:icon="@drawable/ic_menu_camera"
+                android:icon="@drawable/mypets"
                 android:title="Mis Mascotas" />
             <item
                 android:id="@+id/Addpet"
@@ -22,7 +22,7 @@
         <menu>
             <item
                 android:id="@+id/Events"
-                android:icon="@drawable/eventos"
+                android:icon="@drawable/mypets"
                 android:title="Eventos" />
             <item
                 android:id="@+id/Adoption"

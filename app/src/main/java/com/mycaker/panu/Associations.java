@@ -16,8 +16,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Associations extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+public class Associations extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Association e1,e2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
