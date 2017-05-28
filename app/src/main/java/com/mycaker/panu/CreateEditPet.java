@@ -1,29 +1,30 @@
 package com.mycaker.panu;
 
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
-import java.net.URL;
-
 import static java.lang.Integer.parseInt;
 
-public class CreateEditPet extends AppCompatActivity {
+public class CreateEditPet extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     ManagerBD db;
     Pet pet;
@@ -36,6 +37,7 @@ public class CreateEditPet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_edit_pet);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         final int id =  getIntent().getIntExtra("id", 0);
         foto_gallery = (ImageView)findViewById(R.id.petimage);
         db= new ManagerBD(this, "panu", null, 1);
@@ -190,14 +192,16 @@ public class CreateEditPet extends AppCompatActivity {
 
 
 
-
-
-
             }
         });
 
-
-
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_createEdit);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     private void openGallery(){
@@ -220,7 +224,74 @@ public class CreateEditPet extends AppCompatActivity {
         int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
         return cursor.getString(idx);
     }
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_createEdit);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.my_pets, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        switch (id){
+            case R.id.Adoption:{
+                Intent intent=new Intent(CreateEditPet.this,Adoption.class);
+                startActivity(intent);
+            }break;
+            case R.id.About:{
+                Intent intent=new Intent(CreateEditPet.this,About.class);
+                startActivity(intent);
+            }break;
+            case R.id.Addpet:{
+                Intent intent=new Intent(CreateEditPet.this,CreateEditPet.class);
+                startActivity(intent);
+            }break;
+            case R.id.Associations:{
+                Intent intent=new Intent(CreateEditPet.this,Associations.class);
+                startActivity(intent);
+            }break;
+            case R.id.Events:{
+                Intent intent=new Intent(CreateEditPet.this,Events.class);
+                startActivity(intent);
+            }break;
+            case R.id.Mypets:{
+                Intent intent=new Intent(CreateEditPet.this,myPets.class);
+                startActivity(intent);
+
+            }break;
+            default:break;
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_createEdit);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
 
  }
