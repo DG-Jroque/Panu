@@ -11,7 +11,7 @@
         android:layout_below="@+id/category"
         android:layout_toRightOf="@+id/MainText"
         android:layout_toEndOf="@+id/MainText"
-        android:shadowColor="@color/fondo"/>
+        />
 
     <TextView
         android:layout_width="wrap_content"
