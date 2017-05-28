@@ -22,84 +22,37 @@ public class petCarnet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet_carnet);
-        int id=getIntent().getIntExtra("id",0);
-        db= new ManagerBD(this, "panu", null, 1);
+        int id = getIntent().getIntExtra("id", 0);
+        db = new ManagerBD(this, "panu", null, 1);
         try {
-           p = db.showpet(id);
+            p = db.showpet(id);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Error al cargar mascota", Toast.LENGTH_LONG).show();
         }
 
-        ImageView ivp= (ImageView) findViewById(R.id.imageView8);
+        ImageView ivp = (ImageView) findViewById(R.id.imageView8);
         ivp.setImageBitmap(BitmapFactory.decodeFile(p.getImagepath()));
 
         EditText etp = (EditText) findViewById((R.id.editText));
-        etp.setText("Nombre: "+p.getName() +
-                "\t Especie: "+p.getSpecie()+
-                "\n Raza: "+p.getBreed()+
-                "\t Sexo: "+p.getSex()+
-                "\n Tamaño: "+p.getSize()+
-                "\t Pelo: "+p.getHair()+
-                        "\n Color: "+ p.getColor() +
-                        "\t Fecha de nacimiento: "+p.getBirthDay()+
-                        "\n Peso: "+p.getWeigth());
+        etp.setText("Nombre: " + p.getName() +
+                "\t Especie: " + p.getSpecie() +
+                "\n Raza: " + p.getBreed() +
+                "\t Sexo: " + p.getSex() +
+                "\n Tamaño: " + p.getSize() +
+                "\t Pelo: " + p.getHair() +
+                "\n Color: " + p.getColor() +
+                "\t Fecha de nacimiento: " + p.getBirthDay() +
+                "\n Peso: " + p.getWeigth());
 
-        ImageButton epb=(ImageButton) findViewById(R.id.editpetbutton);
+        ImageButton epb = (ImageButton) findViewById(R.id.editpetbutton);
         epb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /*Intent i = new Intent(petCarnet.this, CreateEditPet.class );
                 i.putExtra("id", p.getId());
                 startActivity(i);*/
-                Toast.makeText(petCarnet.this,"Yes",Toast.LENGTH_LONG).show();
+                Toast.makeText(petCarnet.this, "Yes", Toast.LENGTH_LONG).show();
             }
         });
-        ImageButton vab=(ImageButton) findViewById(R.id.imageButton);
-        vab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                VacunasL();
-            }
-        });
-
-        ImageButton medb=(ImageButton) findViewById(R.id.editpetbutton);
-        medb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MedicalL();
-            }
-        });
-
-        ImageButton dwb=(ImageButton) findViewById(R.id.imageButton4);
-        dwb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DesparaL();
-            }
-        });
-
-
     }
-    public void VacunasL() {
-        Intent i = new Intent(petCarnet.this, Vaccine.class );
-        startActivity(i);
-    }
-    public void DesparaL() {
-        Intent i = new Intent(petCarnet.this, Deworming.class );
-        startActivity(i);
-    }
-    public void MedicalL() {
-        Intent i = new Intent(petCarnet.this, Medical.class );
-        startActivity(i);
-    }
-    public void EditL() {
-        Intent i = new Intent(petCarnet.this, CreateEditPet.class );
-        i.putExtra("id", p.getId());
-        startActivity(i);
-    }
-
-
-
-
-
 }
