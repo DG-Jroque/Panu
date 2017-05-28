@@ -9,6 +9,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_pet_carnet">petCarnet</string>
+    <string name="title_activity_create">Crear Mascota</string>
 
     <string-array name="species">
         <item>Perro</item>
