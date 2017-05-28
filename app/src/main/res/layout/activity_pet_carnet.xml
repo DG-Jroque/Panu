@@ -40,6 +40,15 @@
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/ic_menu_manage" />
 
+        <ImageButton
+            android:id="@+id/buttonvac"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/vacunas"
+            android:layout_below="@+id/editText"
+            android:layout_marginTop="27dp"
+            android:layout_alignStart="@+id/editText" />
+
     </RelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>
