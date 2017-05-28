@@ -12,7 +12,7 @@ import static java.lang.Integer.parseInt;
  * Created by Carlos on 20/05/2017.
  */
 
-public class Pet{
+public class Pet implements  Serializable{
 
     ArrayList<Vaccine> vaccines;
     ArrayList<Medical> medical;
