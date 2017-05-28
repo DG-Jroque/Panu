@@ -10,23 +10,40 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class Associations extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
-
+    Association e1,e2,e3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_associations);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_associations);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        final ArrayList<Association> disponibles = new ArrayList<Association>();
+        e1=new Association(1,23,"Panu","jose.roque@tecmor.mx","123456","Ana Gallaga","Centro","Morelia","Michoacan","4434656736");
+        e2=new Association(2,12,"Clinica de Atencion Canina","catc@gob.mx","123456","Tecnologico","Santiaguito","Morelia","Michoacan","4434656736");
+        disponibles.add(e1);
+        disponibles.add(e2);
+        ListView lv = (ListView) findViewById(R.id.lv);
+        lv.setAdapter(new AdapterAssociation(this,disponibles,R.layout.item_eandas) {
+            @Override
+            public void onDisplayRow(View view, int pos) {
+                TextView title = (TextView) view.findViewById(R.id.category);
+                TextView description = (TextView) view.findViewById(R.id.texto);
+                TextView text = (TextView) view.findViewById(R.id.MainText);
+
+                title.setText(disponibles.get(pos).getNombre());
+                description.setText(disponibles.get(pos).getEstado());
+                text.setText(disponibles.get(pos).getCorreo());
+            }
+        });
+
 
     }
     @Override

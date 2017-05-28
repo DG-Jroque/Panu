@@ -12,7 +12,7 @@
                 android:title="Mis Mascotas" />
             <item
                 android:id="@+id/Addpet"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@mipmap/mas"
                 android:title="Agregar Mascota" />
 
         </menu>
@@ -22,7 +22,7 @@
         <menu>
             <item
                 android:id="@+id/Events"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@mipmap/eventos"
                 android:title="Eventos" />
             <item
                 android:id="@+id/Adoption"
@@ -35,7 +35,7 @@
                 android:title="Asocioaciones" />
             <item
                 android:id="@+id/About"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@mipmap/contacto"
                 android:title="Contactanos papu" />
         </menu>
     </item>

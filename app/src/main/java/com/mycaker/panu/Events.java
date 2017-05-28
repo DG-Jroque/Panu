@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,41 +11,44 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import org.json.JSONArray;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
 
 public class Events extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
-    Button btnHit;
-    TextView txtJson;
-    ProgressDialog pd;
+    Event e1,e2,e3;
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_events);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        final ArrayList<Event> disponibles = new ArrayList<Event>();
+        e1=new Event(1,1,5,"Croqueton","jose.roque@tecmor.mx","123456","Ana Gallaga","Centro","Morelia","Michoacan","4434656736");
+        e2=new Event(2,2,12,"Campana de vacunacion","jose.roque@tecmor.mx","123456","Ana Gallaga","Centro","Morelia","Michoacan","4434656736");
+        e3=new Event(3,2,12,"Adoptamor","jose.roque@tecmor.mx","123456","Ana Gallaga","Centro","Morelia","Michoacan","4434656736");
+        disponibles.add(e1);
+        disponibles.add(e2);
+        disponibles.add(e3);
+        ListView lv = (ListView) findViewById(R.id.lv);
+        //AdapterAvailable adapter = new AdapterAvailable(this, disponibles);
+        //lv.setAdapter(adapter);
+
+        lv.setAdapter(new AdapterEvent(this,disponibles,R.layout.item_eandas) {
+            @Override
+            public void onDisplayRow(View view, int pos) {
+                TextView title = (TextView) view.findViewById(R.id.category);
+                TextView description = (TextView) view.findViewById(R.id.texto);
+                TextView text = (TextView) view.findViewById(R.id.MainText);
+
+                title.setText(disponibles.get(pos).getNombre());
+                description.setText(disponibles.get(pos).getAsoc_id());
+                text.setText(disponibles.get(pos).getCiudad());
+            }
+        });
 
     }
 

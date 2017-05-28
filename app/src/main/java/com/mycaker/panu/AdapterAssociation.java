@@ -2,7 +2,6 @@ package com.mycaker.panu;
 
 import android.app.Service;
 import android.content.Context;
-import android.content.pm.ServiceInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +13,16 @@ import java.util.ArrayList;
  * Created by Roque on 27/05/2017.
  */
 
-public abstract class MiAdaptador extends BaseAdapter {
-    private Context context;
-    private ArrayList<PetsAvailable> list;
-    private int layout;
+public abstract class AdapterAssociation extends BaseAdapter {
 
-    public MiAdaptador(Context context, ArrayList<PetsAvailable> list, int layout) {
+    private Context context;
+    private ArrayList<Association> list;
+    private int layout;
+    public AdapterAssociation(Context context, ArrayList<Association> list, int layout) {
         this.context = context;
         this.list = list;
         this.layout = layout;
     }
-
     @Override
     public int getCount() {
         return list.size();

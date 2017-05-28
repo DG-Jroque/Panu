@@ -6,11 +6,12 @@ package com.mycaker.panu;
 
 public class Association {
     private int id_asoc,numero;
-    private String correo,password,calle,colonia,ciudad,estado,telefono;
+    private String nombre,correo,password,calle,colonia,ciudad,estado,telefono;
 
-    public Association(int id_asoc, int numero, String correo, String password, String calle, String colonia, String ciudad, String estado, String telefono) {
+    public Association(int id_asoc, int numero, String nombre, String correo, String password, String calle, String colonia, String ciudad, String estado, String telefono) {
         this.id_asoc = id_asoc;
         this.numero = numero;
+        this.nombre = nombre;
         this.correo = correo;
         this.password = password;
         this.calle = calle;
@@ -34,6 +35,14 @@ public class Association {
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getCorreo() {
