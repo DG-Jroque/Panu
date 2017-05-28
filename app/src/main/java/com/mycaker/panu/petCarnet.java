@@ -60,8 +60,7 @@ public class petCarnet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent a =new Intent(petCarnet.this, CreateEditPet.class);
-                int x=id;
-                a.putExtra("pet", p);
+                //a.putExtra("id", 1);
                 startActivity(a);
             }
         });
@@ -69,8 +68,8 @@ public class petCarnet extends AppCompatActivity {
         bv.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent b =new Intent(petCarnet.this, VaccinesAct.class);
-                b.putExtra("id",0);
+                Intent b = new Intent(getApplicationContext(), VaccinesAct.class);
+                //b.putExtra("id",1);
                 startActivity(b);
             }
         });
@@ -78,19 +77,11 @@ public class petCarnet extends AppCompatActivity {
         bd.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent c =new Intent(petCarnet.this, Deworming.class);
-                c.putExtra("var",id);
+                Intent c =new Intent(getApplicationContext(), Deworming.class);
+                c.putExtra("id",1);
                 startActivity(c);
             }
         });
-        ImageButton bm = (ImageButton) findViewById(R.id.buttondw);
-        bm.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent d =new Intent(petCarnet.this, Deworming.class);
-                d.putExtra("var",id);
-                startActivity(d);
-            }
-        });
+
     }
 }

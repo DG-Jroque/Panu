@@ -36,6 +36,7 @@ public class CreateEditPet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_edit_pet);
+        //pet= (Pet)getIntent().getSerializableExtra("pet");
         final int id =  getIntent().getIntExtra("id", 0);
         foto_gallery = (ImageView)findViewById(R.id.petimage);
         db= new ManagerBD(this, "panu", null, 1);

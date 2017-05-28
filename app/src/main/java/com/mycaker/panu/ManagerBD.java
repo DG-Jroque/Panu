@@ -25,10 +25,12 @@ public class ManagerBD extends SQLiteOpenHelper {
         String ctv = "CREATE TABLE VACCINES (id_vacc INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, date TEXT, diluent TEXT, petid INTEGER);";
         String ctm = "CREATE TABLE MEDICAL (id_med INTEGER PRIMARY KEY AUTOINCREMENT, disease TEXT, date TEXT, petid INTEGER);";
         String ctw = "CREATE TABLE DEWORMING (id_dew INTEGER PRIMARY KEY AUTOINCREMENT, product TEXT, date TEXT, petid INTEGER);";
+        String iv = "INSERT INTO VACCINES VALUES (null,'Y', 'X', 'x',1);";
         db.execSQL(ctp);
         db.execSQL(ctv);
         db.execSQL(ctm);
         db.execSQL(ctw);
+        db.execSQL(iv);
 
     }
 
