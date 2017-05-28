@@ -22,10 +22,11 @@ public class petCarnet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet_carnet);
-        int id = getIntent().getIntExtra("id", 0);
+        final int id = getIntent().getIntExtra("id", 0);
         db = new ManagerBD(this, "panu", null, 1);
         try {
             p = db.showpet(id);
+            //Toast.makeText(getApplicationContext(), p.getId()+"", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Error al cargar mascota", Toast.LENGTH_LONG).show();
         }
@@ -44,14 +45,23 @@ public class petCarnet extends AppCompatActivity {
                 "\t Fecha de nacimiento: " + p.getBirthDay() +
                 "\n Peso: " + p.getWeigth());
 
-        ImageButton epb = (ImageButton) findViewById(R.id.editpetbutton);
+        /*ImageButton epb = (ImageButton) findViewById(R.id.editpetbutton);
         epb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent i = new Intent(petCarnet.this, CreateEditPet.class );
+                Intent i = new Intent(petCarnet.this, CreateEditPet.class );
                 i.putExtra("id", p.getId());
-                startActivity(i);*/
+                startActivity(i);
                 Toast.makeText(petCarnet.this, "Yes", Toast.LENGTH_LONG).show();
+            }
+        });*/
+        ImageButton be = (ImageButton) findViewById(R.id.buttonedit);
+        be.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent a =new Intent(petCarnet.this, CreateEditPet.class);
+                a.putExtra("id",0);
+                startActivity(a);
             }
         });
     }
