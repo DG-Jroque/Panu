@@ -1,5 +1,6 @@
 package com.mycaker.panu;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -43,17 +44,18 @@ public class petCarnet extends AppCompatActivity {
                         "\n Peso: "+p.getWeigth());
     }
     public void VacunasL(View view) {
-        Intent i = new Intent(this, AcercaDe.class );
+        Intent i = new Intent(this, Vaccine.class );
         startActivity(i);
     }
     public void DesparaL(View view) {
-        Intent i = new Intent(this, AcercaDe.class );
+        Intent i = new Intent(this, Deworming.class );
         startActivity(i);
     }
+    /*
     public void (View view) {
         Intent i = new Intent(this, AcercaDe.class );
         startActivity(i);
-    }
+    }*/
 
 
 

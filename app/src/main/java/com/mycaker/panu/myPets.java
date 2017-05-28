@@ -62,14 +62,11 @@ public class myPets extends AppCompatActivity
             db= new ManagerBD(this, "panu", null, 1);
             loadPets();
             vp= (ViewPager) findViewById(R.id.viewPager);
-
-            MiFragmento fm= new MiFragmento();
-            MiFragmento fm1= new MiFragmento();
-            MiFragmento fm2= new MiFragmento();
             ArrayList<Fragment>fragments= new ArrayList<>();
-            fragments.add(fm);
-            fragments.add(fm1);
-            fragments.add(fm2);
+            for (Pet p:pets) {
+                MiFragmento fm= new MiFragmento(p);
+                fragments.add(fm);
+            }
             vp.setAdapter(new AdaptadorPaginas(getSupportFragmentManager(),fragments));
 
 
@@ -85,11 +82,12 @@ public class myPets extends AppCompatActivity
 
     public void loadPets() throws Exception {
         //cargar mascotas de la base de datos sqlite y guardarlas en un arraylist de mascotas...
-        int petNum= db.countpet();
+        int petNum= db.lastid();
         Toast.makeText(getApplicationContext(), "numero de tuplas "+petNum, Toast.LENGTH_LONG).show();
         for(int i=0; i<petNum;i++){
             try{
                 Pet a= (Pet)db.showpet(i+1);
+                a.setId(i+1);
                 pets.add(a);
                 img.add(a.getImagepath());
                 names.add(a.getName());
