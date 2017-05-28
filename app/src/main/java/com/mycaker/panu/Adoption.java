@@ -46,7 +46,7 @@ public class Adoption extends AppCompatActivity  implements NavigationView.OnNav
             public void onDisplayRow(View view, int pos) {
                 TextView title = (TextView) view.findViewById(R.id.category);
                 TextView description = (TextView) view.findViewById(R.id.texto);
-                ImageView imagen = (ImageView) view.findViewById(R.id.imageView);
+                ImageView imagen = (ImageView) view.findViewById(R.id.imageView4);
 
                 title.setText(disponibles.get(pos).getNombre());
                 description.setText(disponibles.get(pos).getCaracteristicas());
