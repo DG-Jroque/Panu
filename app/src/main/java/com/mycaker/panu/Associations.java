@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Associations extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
-    Association e1,e2,e3;
+    Association e1,e2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,13 @@ public class Associations extends AppCompatActivity
                 text.setText(disponibles.get(pos).getCorreo());
             }
         });
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_associations);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
 
     }

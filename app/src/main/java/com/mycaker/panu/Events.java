@@ -34,9 +34,6 @@ public class Events extends AppCompatActivity  implements NavigationView.OnNavig
         disponibles.add(e2);
         disponibles.add(e3);
         ListView lv = (ListView) findViewById(R.id.lv);
-        //AdapterAvailable adapter = new AdapterAvailable(this, disponibles);
-        //lv.setAdapter(adapter);
-
         lv.setAdapter(new AdapterEvent(this,disponibles,R.layout.item_eandas) {
             @Override
             public void onDisplayRow(View view, int pos) {
@@ -49,6 +46,15 @@ public class Events extends AppCompatActivity  implements NavigationView.OnNavig
                 text.setText(disponibles.get(pos).getCiudad());
             }
         });
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_events);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
 
     }
 
