@@ -32,12 +32,12 @@ public class CreateEditPet extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
     ImageView foto_gallery;
-    Bitmap bitmap;
+   // Bitmap bitmap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_edit_pet);
-        id= getIntent().getIntExtra("id", 0);
+        id= getIntent().getIntExtra("id",-1);
         foto_gallery = (ImageView)findViewById(R.id.petimage);
         db= new ManagerBD(this, "panu", null, 1);
 
@@ -69,7 +69,6 @@ public class CreateEditPet extends AppCompatActivity {
                 openGallery();
             }
         });
-
         //en caso de no mandar una mascota, crear una nueva
         if(id<=0){
             //habilitar los controladores
@@ -88,6 +87,7 @@ public class CreateEditPet extends AppCompatActivity {
 
         }
         else{
+            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
             //Si se mandó una mascota desde la actividad anterior
             //insertar el nombre en el EditText name
 
