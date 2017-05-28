@@ -1,6 +1,8 @@
 package com.mycaker.panu;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,15 +12,48 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.io.File;
+import java.util.ArrayList;
 
 public class Adoption extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
-
+    PetsAvailable m1,m2,m3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adoption);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        final ArrayList<PetsAvailable> disponibles = new ArrayList<PetsAvailable>();
+        File filePath = getFileStreamPath("perro1.jpg");
+        Drawable d = Drawable.createFromPath(filePath.toString());
+       m1=new PetsAvailable(1,1,5,"Snowball","Perro","Pitbull","macho","gris","corto","2008/02/02","Jugeton",d);
+        m2=new PetsAvailable(2,2,3,"Snowball","Perro","Pitbull","macho","gris","corto","2008/02/02","Jugeton",d);
+      //  m3=new PetsAvailable();
+        disponibles.add(m1);
+        disponibles.add(m2);
+        ListView lv = (ListView) findViewById(R.id.lv);
+        //AdapterAvailable adapter = new AdapterAvailable(this, disponibles);
+        //lv.setAdapter(adapter);
+
+        lv.setAdapter(new MiAdaptador(this,disponibles,R.layout.item_adoptionavailable) {
+            @Override
+            public void onDisplayRow(View view, int pos) {
+                TextView title = (TextView) view.findViewById(R.id.category);
+                TextView description = (TextView) view.findViewById(R.id.texto);
+                ImageView imagen = (ImageView) view.findViewById(R.id.imageView4);
+
+                title.setText(disponibles.get(pos).getNombre());
+                description.setText(disponibles.get(pos).getCaracteristicas());
+                imagen.setImageResource(R.mipmap.ic_launcher);
+            }
+        });
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_adoption);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

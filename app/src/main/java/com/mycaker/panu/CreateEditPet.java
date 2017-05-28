@@ -22,7 +22,7 @@ import static java.lang.Integer.parseInt;
 public class CreateEditPet extends AppCompatActivity {
 
     ManagerBD db;
-    int id=0;
+    int id;
     Pet pet;
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
@@ -31,6 +31,7 @@ public class CreateEditPet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_edit_pet);
+        id= getIntent().getIntExtra("id", 0);
         foto_gallery = (ImageView)findViewById(R.id.petimage);
         db= new ManagerBD(this, "panu", null, 1);
 
@@ -63,7 +64,6 @@ public class CreateEditPet extends AppCompatActivity {
             }
         });
 
-        id= getIntent().getIntExtra("id", -1);
         //en caso de no mandar una mascota, crear una nueva
         if(id<=0){
             //habilitar los controladores
