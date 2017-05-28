@@ -57,12 +57,9 @@ public class MiFragmento extends Fragment {
 
 
         //File imgFile = new  File(ruta);
-        File imgFile = new  File(pet.getImagepath());
-        Uri uri = Uri.fromFile(imgFile);
-        imageButton.setImageURI(uri);
 
-
-
+            if(pet.getSpecie()=="Perro"){imageButton.setImageResource(R.mipmap.perro2);}
+            else{imageButton.setImageResource(R.mipmap.perro2);}
 
 
 
