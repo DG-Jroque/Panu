@@ -96,6 +96,9 @@ public class myPets extends AppCompatActivity
                 //Toast.makeText(getApplicationContext(), "Error en for "+ex.toString(), Toast.LENGTH_LONG).show();
             }
         }
+        if(pets.size()==0){
+            Toast.makeText(getApplicationContext(), "No tienes mascotas aún", Toast.LENGTH_LONG).show();
+        }
     }
 
 
