@@ -47,6 +47,16 @@ public class ManagerBD extends SQLiteOpenHelper {
         return pe;
     }
 
+    public String showpetstring(int id) throws Exception{
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sp = "SELECT * FROM PETS WHERE id_pet = " + id + ";";
+        Cursor cursor = db.rawQuery(sp, null);
+        cursor.moveToNext();
+        //agregar el atributo size al crear el objeto Pet
+        String pe = " "+cursor.getInt(6)+cursor.getString(1)+cursor.getString(2)+cursor.getString(3);
+        return pe;
+    }
+
     public int countpet() throws Exception{
         SQLiteDatabase db = this.getWritableDatabase();
         String cp = "SELECT count(id_pet) FROM PETS;";
