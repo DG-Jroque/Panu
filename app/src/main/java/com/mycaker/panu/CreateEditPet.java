@@ -1,7 +1,10 @@
 package com.mycaker.panu;
 
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -15,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.net.URL;
 
 import static java.lang.Integer.parseInt;
@@ -24,9 +28,11 @@ public class CreateEditPet extends AppCompatActivity {
     ManagerBD db;
     int id;
     Pet pet;
+    String imgpath;
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
     ImageView foto_gallery;
+    Bitmap bitmap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -183,7 +189,7 @@ public class CreateEditPet extends AppCompatActivity {
                                     hair.getSelectedItem().toString(),
                                     sex.getSelectedItem().toString(),
                                     specie.getSelectedItem().toString(),
-                                    imageUri.toString(),
+                                    getRealPathFromURI(imageUri),
                                     size.getSelectedItem().toString());
                             try {
                                 db.inpet(p);
@@ -238,8 +244,18 @@ public class CreateEditPet extends AppCompatActivity {
         if(resultCode == RESULT_OK && requestCode == PICK_IMAGE){
             imageUri = data.getData();
             foto_gallery.setImageURI(imageUri);
+            Toast.makeText(getApplicationContext(),imageUri.toString(), Toast.LENGTH_LONG).show();
         }
     }
+
+    public String getRealPathFromURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
+    }
+
+
 
  }
 
