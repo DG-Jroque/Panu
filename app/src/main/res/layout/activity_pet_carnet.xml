@@ -49,6 +49,25 @@
             android:layout_marginTop="27dp"
             android:layout_alignStart="@+id/editText" />
 
+        <ImageButton
+            android:id="@+id/buttondw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/buttonvac"
+            app:srcCompat="@mipmap/desparacitacion"
+            android:layout_alignEnd="@+id/editText"
+            android:layout_toEndOf="@+id/buttonvac" />
+
+        <ImageButton
+            android:id="@+id/buttonmed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@mipmap/fecha"
+            android:layout_below="@+id/buttonvac"
+            android:layout_alignStart="@+id/buttonvac"
+            android:layout_alignEnd="@+id/buttondw" />
+
     </RelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>

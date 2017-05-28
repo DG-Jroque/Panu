@@ -26,7 +26,6 @@ import static java.lang.Integer.parseInt;
 public class CreateEditPet extends AppCompatActivity {
 
     ManagerBD db;
-    int id;
     Pet pet;
     String imgpath;
     private static final int PICK_IMAGE = 100;
@@ -37,7 +36,7 @@ public class CreateEditPet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_edit_pet);
-        id= getIntent().getIntExtra("id",-1);
+        final int id =  getIntent().getIntExtra("id", 0);
         foto_gallery = (ImageView)findViewById(R.id.petimage);
         db= new ManagerBD(this, "panu", null, 1);
 
@@ -72,48 +71,23 @@ public class CreateEditPet extends AppCompatActivity {
         //en caso de no mandar una mascota, crear una nueva
         if(id<=0){
             //habilitar los controladores
-            name.setFocusable(true);
-            date.setFocusable(true);
-            color.setFocusable(true);
-            breed.setFocusable(true);
-            weight.setFocusable(true);
-            sex.setFocusable(true);
-            specie.setFocusable(true);
-            hair.setFocusable(true);
-            size.setFocusable(true);
             //MODIFICAR EL BOTON PARA SALVAR
             save.setText("Guardar");
-
-
         }
         else{
-            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+
             //Si se mandó una mascota desde la actividad anterior
-            //insertar el nombre en el EditText name
-
-
-            //Deshabilitar los textos y
-            name.setFocusable(false);
-            color.setFocusable(false);
-            breed.setFocusable(false);
-            weight.setFocusable(false);
-            sex.setFocusable(false);
-            specie.setFocusable(false);
-            hair.setFocusable(false);
-            size.setFocusable(false);
-
             try {
                 pet= (Pet) db.showpet(id);
             } catch (Exception e) {
                 e.printStackTrace();
-                id=0;
             }
             //ingresar los valores que se tienen de la mascota
             name.setText(pet.getName());
             color.setText(pet.getColor());
             breed.setText(pet.getBreed());
             weight.setText(pet.getWeigth());
-
+/*
             ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Sex, android.R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             sex.setAdapter(adapter);
@@ -137,8 +111,8 @@ public class CreateEditPet extends AppCompatActivity {
             specie.setAdapter(adapter3);
             int spinnerPosition3 = adapter.getPosition(pet.getSize());
             specie.setSelection(spinnerPosition2);
-
-            foto_gallery.setImageBitmap(BitmapFactory.decodeFile(pet.getImagepath()));
+*/
+            //foto_gallery.setImageBitmap(BitmapFactory.decodeFile(pet.getImagepath()));
 
 
 
@@ -174,7 +148,7 @@ public class CreateEditPet extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Error al cargar la mascota", Toast.LENGTH_LONG).show();
                             }
                             Intent intent= new Intent(CreateEditPet.this, myPets.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         }
                         //se crea una inserción
@@ -206,15 +180,7 @@ public class CreateEditPet extends AppCompatActivity {
 
 
                     }else{
-                        name.setFocusable(true);
-                        date.setFocusable(true);
-                        color.setFocusable(true);
-                        breed.setFocusable(true);
-                        weight.setFocusable(true);
-                        sex.setFocusable(true);
-                        specie.setFocusable(true);
-                        hair.setFocusable(true);
-                        size.setFocusable(true);
+
                         //MODIFICAR EL BOTON PARA SALVAR
                         save.setText("Guardar");
 

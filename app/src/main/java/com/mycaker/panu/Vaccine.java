@@ -5,8 +5,8 @@ package com.mycaker.panu;
  */
 
 public class Vaccine {
-    String date, name, diluent;
-    int id, petId;
+    private String date, name, diluent;
+    private int id, petId;
 
     Vaccine(String date, String name, String diluent, int id, int petId){
         this.date=date;
