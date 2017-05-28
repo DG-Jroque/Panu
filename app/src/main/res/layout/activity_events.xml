@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_events"
-    android:background="@color/colorAccent"
 
     tools:context="com.mycaker.panu.Events">
 
@@ -14,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="70dp"
+        android:paddingLeft="10dp"
         android:id="@+id/lv"></ListView>
 
     <include

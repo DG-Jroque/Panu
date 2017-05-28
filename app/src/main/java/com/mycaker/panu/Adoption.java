@@ -30,8 +30,8 @@ public class Adoption extends AppCompatActivity  implements NavigationView.OnNav
         final ArrayList<PetsAvailable> disponibles = new ArrayList<PetsAvailable>();
         File filePath = getFileStreamPath("s");
         Drawable d = Drawable.createFromPath(filePath.toString());
-       m1=new PetsAvailable(1,1,5,"Snowball","Perro","Pitbull","macho","gris","corto","2008/02/02","Jugeton",d);
-        m2=new PetsAvailable(2,2,3,"Snowball","Perro","Pitbull","macho","gris","corto","2008/02/02","Jugeton",d);
+       m1=new PetsAvailable(1,1,5,"Snowball","Perro","Pitbull","macho","gris","corto","2008/02/02","Clinica de Atencion Canina",d);
+        m2=new PetsAvailable(2,2,3,"Chilaquils","Perro","Pitbull","macho","gris","corto","2008/02/02","Panu",d);
       //  m3=new PetsAvailable();
         disponibles.add(m1);
         disponibles.add(m2);
@@ -45,7 +45,6 @@ public class Adoption extends AppCompatActivity  implements NavigationView.OnNav
                 TextView title = (TextView) view.findViewById(R.id.category);
                 TextView description = (TextView) view.findViewById(R.id.texto);
                 ImageView imagen = (ImageView) view.findViewById(R.id.imageView4);
-
                 title.setText(disponibles.get(pos).getNombre());
                 description.setText(disponibles.get(pos).getCaracteristicas());
                 imagen.setImageResource(R.mipmap.perro1);

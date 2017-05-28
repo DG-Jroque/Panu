@@ -28,9 +28,9 @@ public class Events extends AppCompatActivity  implements NavigationView.OnNavig
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final ArrayList<Event> disponibles = new ArrayList<Event>();
-        e1=new Event(1,1,5,"Croqueton","jose.roque@tecmor.mx","123456","Ana Gallaga","Centro","Morelia","Michoacan","4434656736");
-        e2=new Event(2,2,12,"Campana de vacunacion","jose.roque@tecmor.mx","123456","Ana Gallaga","Centro","Morelia","Michoacan","4434656736");
-        e3=new Event(3,2,12,"Adoptamor","jose.roque@tecmor.mx","123456","Ana Gallaga","Centro","Morelia","Michoacan","4434656736");
+        e1=new Event(1,1,5,"Croqueton","jose.roque@tecmor.mx","123456","Ana Gallaga","Centro Historico","Caminata con tu mascota","Michoacan","4434656736");
+        e2=new Event(2,2,12,"Campana de vacunacion","jose.roque@tecmor.mx","123456","Ana Gallaga","Lomas de Santiaguito","Vacuna a tu amigo","Michoacan","4434656736");
+        e3=new Event(3,2,12,"Adoptamor","jose.roque@tecmor.mx","123456","Ana Gallaga","Centro","Las Americas","Brinda un hogar con amor","4434656736");
         disponibles.add(e1);
         disponibles.add(e2);
         disponibles.add(e3);

@@ -36,8 +36,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignBottom="@+id/texto"
-        android:maxHeight="35dp"
-        android:maxWidth="74dp"
+        android:maxHeight="70dp"
+        android:maxWidth="148dp"
         android:adjustViewBounds="true" />
 
 </LinearLayout>
