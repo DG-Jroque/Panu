@@ -17,14 +17,13 @@
 
         <ImageView
             android:id="@+id/petimage"
-            android:layout_width="158dp"
-            android:layout_height="126dp"
+            android:layout_width="120dp"
+            android:layout_height="110dp"
             app:srcCompat="@drawable/ic_menu_gallery"
             tools:layout_editor_absoluteX="90dp"
             tools:layout_editor_absoluteY="6dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp" />
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:id="@+id/createEdit_Name"
@@ -57,7 +56,7 @@
             tools:layout_editor_absoluteX="180dp"
             tools:layout_editor_absoluteY="188dp"
             android:entries="@array/Sex"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/creatEdit_SpinnerEspecies"
             android:layout_alignStart="@+id/creatEdit_SpinnerEspecies" />
 
         <Spinner
@@ -78,9 +77,8 @@
             tools:layout_editor_absoluteX="183dp"
             tools:layout_editor_absoluteY="238dp"
             android:entries="@array/Hair"
-            android:layout_alignBaseline="@+id/createedit_SpinnerSex"
-            android:layout_alignBottom="@+id/createedit_SpinnerSex"
-            android:layout_alignParentEnd="true" />
+            android:layout_below="@+id/createEdit_SpinnerSize"
+            android:layout_alignStart="@+id/createEdit_SpinnerSize" />
 
         <EditText
             android:id="@+id/createEdit_Color"
