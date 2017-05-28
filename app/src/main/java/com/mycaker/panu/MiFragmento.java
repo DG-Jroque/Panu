@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.FileInputStream;
 
 /**
  * Created by Carlos on 27/05/2017.
@@ -55,6 +56,10 @@ public class MiFragmento extends Fragment {
         File imgFile = new  File(pet.getImagepath());
         Uri uri = Uri.fromFile(imgFile);
         imageButton.setImageURI(uri);
+
+        Intent i = new Intent(null,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
 
 
 

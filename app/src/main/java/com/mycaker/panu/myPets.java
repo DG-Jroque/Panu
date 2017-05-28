@@ -71,7 +71,7 @@ public class myPets extends AppCompatActivity
 
 
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Error de viewPager"+e.toString(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "Error de viewPager"+e.toString(), Toast.LENGTH_LONG).show();
         }
 
     }
@@ -83,7 +83,7 @@ public class myPets extends AppCompatActivity
     public void loadPets() throws Exception {
         //cargar mascotas de la base de datos sqlite y guardarlas en un arraylist de mascotas...
         int petNum= db.lastid();
-        Toast.makeText(getApplicationContext(), "numero de tuplas "+petNum, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "numero de tuplas "+petNum, Toast.LENGTH_LONG).show();
         for(int i=0; i<petNum;i++){
             try{
                 Pet a= (Pet)db.showpet(i+1);
@@ -93,7 +93,7 @@ public class myPets extends AppCompatActivity
                 names.add(a.getName());
             }
             catch(Exception ex){
-                Toast.makeText(getApplicationContext(), "Error en for "+ex.toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "Error en for "+ex.toString(), Toast.LENGTH_LONG).show();
             }
         }
     }
